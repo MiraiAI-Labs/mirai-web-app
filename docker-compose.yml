@@ -1,0 +1,55 @@
+services:
+    webserver:
+        image: nginx:alpine
+        restart: unless-stopped
+        tty: true
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+        ports:
+            - "80:80"
+        networks:
+            - mirai
+    mariadb:
+        image: mariadb:latest
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: root # Optional, set a separate root password
+        ports:
+            - "${DB_PORT}:3306"
+        volumes:
+            - mariadb-data:/var/lib/mysql # Optional, persist data volume
+        networks:
+            - mirai
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        restart: always
+        ports:
+            - 8080:80
+        environment:
+            PMA_HOST: host.docker.internal
+            PMA_ARBITRARY: 1
+            PMA_USER: root
+            PMA_PASSWORD: root
+        networks:
+            - mirai
+        depends_on:
+            - mariadb
+    mailhog:
+        image: mailhog/mailhog
+        ports:
+            - 8025:8025
+            - 1025:1025
+        networks:
+            - mirai
+
+volumes:
+    mariadb-data:
+        driver: local
+
+networks:
+    mirai:
+        driver: bridge

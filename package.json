@@ -1,0 +1,23 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@alpinejs/persist": "^3.12",
+        "@defstudio/vite-livewire-plugin": "^2.0.5",
+        "@fortawesome/fontawesome-free": "^6.6.0",
+        "alpinejs": "^3.8",
+        "aos": "^2.3.4",
+        "autoprefixer": "^10.4",
+        "daisyui": "^3.0",
+        "laravel-vite-plugin": "^1.0.0",
+        "postcss": "^8.4",
+        "swiper": "^11.1.9",
+        "tailwindcss": "^3.0",
+        "toastr": "^2.1.4",
+        "vite": "^5.0.0"
+    }
+}

@@ -1,0 +1,292 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import 'swiper/css/bundle';
+@import 'toastr/build/toastr.min.css';
+
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://unpkg.com/tailwindcss/dist/base.css
+ */
+@tailwind base;
+
+/**
+ * Remove the default box-shadow for invalid elements to prevent
+ * inputs in Livewire components showing with a
+ * red border by default in Firefox.
+ *
+ * See: https://github.com/laravel-frontend-presets/tall/issues/7
+ */
+ input:invalid, textarea:invalid, select:invalid {
+    box-shadow: none;
+}
+
+/**
+ * This injects any component classes registered by plugins.
+ */
+@tailwind components;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ */
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ */
+@tailwind utilities;
+
+@layer utilities {
+    .fa-6x {
+        font-size: 6em;
+    }
+
+    .transform-center {
+        transform: translate(50%, -50%);
+        top: 50%;
+        right: 50%;
+    }
+
+    .menu li > *:not(ul):not(.menu-title):not(details).active {
+        @apply text-white;
+        @apply bg-app-card;
+        cursor: pointer;
+    }
+
+    .menu li > *:not(ul):not(.menu-title):not(details) {
+        @apply h-14;
+        @apply flex;
+    }
+
+    .app-card {
+        @apply shadow-xl;
+        @apply card;
+        animation: app-card-pop var(--animation-btn, 0.25s) ease-out;
+    }
+
+    .pop-anim {
+        animation: app-card-pop var(--animation-btn, 0.25s) ease-out;
+    }
+
+    @keyframes app-card-pop {
+        0% {
+            transform: scale(0.9);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .drawer-content-container {
+        min-height: calc(100vh - 4rem - 168px); /* 4rem = header height, 168px = footer height */
+        @apply p-6;
+        @apply w-full;
+    }
+
+    .transform-center-scaled {
+        transform: translate(50%, -50%) scale(3);
+        top: 50%;
+        right: 50%;
+    }
+}
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ */
+
+[x-cloak] {
+    display: none;
+}
+
+/* Toastr Styling Start */
+.toast > .toast-title {
+    @apply text-base;
+    @apply font-semibold;
+    @apply text-white;
+    @apply text-neutral;
+    @apply text-wrap;
+}
+
+.toast > .toast-message {
+    @apply text-xs;
+    @apply font-medium;
+    @apply flex;
+    @apply items-center;
+    @apply text-wrap;
+    @apply text-neutral;
+    @apply dark:text-white;
+}
+
+.toast > .toast-message > .btn {
+    background-color: #FFEEE4;
+    border-radius: 16px;
+    font-size: 10px;
+    font-weight: medium;
+    color: black;
+}
+
+.toast > .toast-progress {
+    background-color: #000;
+    animation: none;
+}
+
+/* Toast Error */
+
+#toast-container > .toast-error.toast::before {
+    content: '';
+    background: url('/public/images/toastr/error.png') no-repeat;
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    z-index: 99999;
+    top: 50%;
+    left: 25px;
+    transform: translate(-50%, -50%);
+}
+
+#toast-container > .toast-error::after {
+    content: '';
+    background: radial-gradient(50% 50% at 50% 50%, rgba(240, 66, 72, 0.25) 0%, rgba(240, 66, 72, 0) 100%);
+    width: 240px;
+    height: 240px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: -60px;
+    transform: translateY(-50%);
+}
+
+/* Toast Error */
+
+/* Toast Success */
+
+#toast-container > .toast-success.toast::before {
+    content: '';
+    background: url('/public/images/toastr/success.png') no-repeat;
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    z-index: 99999;
+    top: 50%;
+    left: 25px;
+    transform: translate(-50%, -50%);
+}
+
+#toast-container > .toast-success::after {
+    content: '';
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 237, 81, 0.25) 0%, rgba(0, 237, 123, 0) 100%);
+    width: 240px;
+    height: 240px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: -60px;
+    transform: translateY(-50%);
+}
+
+/* Toast Success */
+
+/* Toast Warning */
+
+#toast-container > .toast-warning.toast::before {
+    content: '';
+    background: url('/public/images/toastr/warning.png') no-repeat;
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    z-index: 99999;
+    top: 50%;
+    left: 25px;
+    transform: translate(-50%, -50%);
+}
+
+#toast-container > .toast-warning::after {
+    content: '';
+    background: radial-gradient(50% 50% at 50% 50%, rgba(255, 212, 38, 0.11) 0%, rgba(255, 212, 38, 0) 100%);
+    width: 240px;
+    height: 240px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: -60px;
+    transform: translateY(-50%);
+}
+
+/* Toast Warning */
+
+/* Toast Info */
+
+#toast-container > .toast-info.toast::before {
+    content: '';
+    background: url('/public/images/toastr/info.png') no-repeat;
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    z-index: 99999;
+    top: 50%;
+    left: 25px;
+    transform: translate(-50%, -50%);
+}
+
+#toast-container > .toast-info::after {
+    content: '';
+    background: radial-gradient(50% 50% at 50% 50%, rgba(38, 118, 255, 0.11) 0%, rgba(255, 212, 38, 0) 100%);
+    width: 240px;
+    height: 240px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: -60px;
+    transform: translateY(-50%);
+}
+
+/* Toast Info */
+
+#toast-container > .toast {
+    background-image: none!important;
+    @apply !p-3.5;
+    @apply !pl-12;
+    @apply z-[9999];
+    @apply !opacity-100;
+    @apply !bg-transparent;
+    @apply backdrop-blur-md;
+    @apply shadow-lg;
+    @apply ring-1;
+    @apply ring-black/5;
+    @apply !rounded-xl;
+}
+
+#toast-container > .toast:hover {
+    @apply shadow-xl;
+}
+
+video.flipped {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+/* Toastr Styling End */
