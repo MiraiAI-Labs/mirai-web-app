@@ -3,9 +3,14 @@
 namespace App\Livewire\Home;
 
 use App\Livewire\BaseController;
+use App\Models\User;
+use Illuminate\Support\Facades\Http;
+use Livewire\WithFileUploads;
 
 class Interview extends BaseController
 {
+    use WithFileUploads;
+
     public $chats = [];
 
     public $cameras = [];
@@ -13,6 +18,26 @@ class Interview extends BaseController
     public $microphones = [];
     public $microphoneId = 0;
     public $audioBlob = null;
+
+    public $started = false;
+    public $muted = true;
+    public $disabled = false;
+    public $loading = false;
+
+    public $api_url = "";
+
+    public $sessionIdentifier = null;
+    public $positionName = "";
+
+    public function mount()
+    {
+        $this->api_url = env("INTERVIEW_API_URL", "http://localhost:8000");
+
+        $user = User::find(auth()->id());
+
+        $this->sessionIdentifier = uniqid($user->id . '_');
+        $this->positionName = $user->position->name;
+    }
 
     public function addChat($message, $name, $type)
     {
@@ -33,6 +58,55 @@ class Interview extends BaseController
     public function setMicrophone($id)
     {
         $this->microphoneId = $id;
+    }
+
+    public function start()
+    {
+        $response = Http::get("$this->api_url/config");
+
+        $welcomeAudioUrl = $response->json()['tts_service'] === 'openai' ?
+            "$this->api_url/static/welcoming/welcoming-alloy.wav" :
+            "$this->api_url/static/welcoming/welcoming-zephlyn.wav";
+
+        $dispatchMessage = [
+            "audioUrl" => $welcomeAudioUrl,
+            "transcription" => "Terima kasih karena telah mempunyai ketertarikan pada perusahaan kami, Nama saya Mirai dari tim rekrutmen. Terima kasih sudah meluangkan waktu untuk mengikuti sesi wawancara ini. Kami sangat senang bisa mengenal Anda lebih dekat hari ini. Semoga kita bisa melalui sesi ini dengan lancar dan nyaman. Jika ada hal yang ingin ditanyakan selama wawancara, jangan ragu untuk mengatakannya. Mari kita mulai dengan perkenalan diri anda secara kreatif."
+        ];
+
+        $this->dispatch('play-audio', $dispatchMessage);
+    }
+
+    public function updatedAudioBlob()
+    {
+        $this->disabled = true;
+        $this->loading = true;
+
+        $this->dispatch('new-chat');
+
+        $queries = [
+            'user_id' => $this->sessionIdentifier,
+            'position' => $this->positionName,
+        ];
+
+        $stringifiedQueries = http_build_query($queries);
+
+        $response = Http::attach('audio', file_get_contents($this->audioBlob->getRealPath()), 'audio.wav')
+            ->post("$this->api_url/speak?$stringifiedQueries");
+
+        unlink($this->audioBlob->getRealPath());
+
+        $response = $response->json();
+
+        $this->addChat($response['transcription'], auth()->user()->name, 'sent');
+
+        $this->dispatch('new-chat');
+
+        $dispatchMessage = [
+            "audioUrl" => $this->api_url . $response['audio_url'],
+            "transcription" => $response['ai_response']
+        ];
+
+        $this->dispatch('play-audio', $dispatchMessage);
     }
 
     public function render()

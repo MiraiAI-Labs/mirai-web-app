@@ -60,32 +60,21 @@
     <script>
         document.addEventListener('alpine:init', () => {      
             Alpine.data('interview', () => ({
-                started: false,
-                muted: true,
-                disabled: false,
+                started: @entangle('started'),
+                muted: @entangle('muted'),
+                disabled: @entangle('disabled'),
                 deviceId: @entangle('microphoneId'),
-                loading: false,
+                loading: @entangle('loading'),
                 mediaRecorder: null,
+                tts_service: null,
                 start() {
                     this.started = true;
+                    this.loading = true;
+                    this.disabled = true;
 
-                    let t = this;
+                    this.scroll();
 
-                    const stream = navigator.mediaDevices.getUserMedia({
-                        audio: { deviceId: { exact: this.deviceId } }
-                    }).then((stream) => {
-                        t.handle(stream, (blob) => {
-                            t.send(blob, true);
-                        });
-
-                        setTimeout(() => {
-                            if(t.mediaRecorder)
-                                t.mediaRecorder.stop();
-                        }, 500);
-                    }).catch((error) => {
-                        console.log(error);
-                        toastr.error('Please allow microphone access');
-                    });
+                    @this.start();
                 },
                 toggle() {
                     this.muted = !this.muted;
@@ -126,7 +115,8 @@
 
                     this.mediaRecorder.onstop = () => {
                         this.loading = true;
-                        this.scroll();
+                        
+                        @this.dispatch('new-chat');
 
                         const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
 
@@ -145,44 +135,44 @@
                         this.mediaRecorder = null;
                     }
                 },
-                send(blob, skipSender = false) {
-                    // play audio
-                    // const audioUrl = URL.createObjectURL(audioBlob);
-                    // const audio = new Audio(audioUrl);
-                    // audio.play();
-                    
-                    let t = this;
-                    t.disabled = true;
-
-                    const formData = new FormData();
-                    formData.append('audio', blob);
-
-                    fetch('{{ env("INTERVIEW_API_URL", "http://localhost:8000") }}/speak', {
-                        method: 'POST',
-                        body: formData
-                    }).then(response => response.json()).then(data => {
-                        if(skipSender === false)
-                        {
-                            @this.addChat(data.transcription, '{{ auth()->user()->name }}', 'sent');
-                            t.scroll();
-                        }
-
-                        const audio = `{{ env("INTERVIEW_API_URL", "http://localhost:8000") }}${data.audio_url}`;
-                        const audioElement = new Audio(audio);
-                        audioElement.play();
-
-                        audioElement.onended = () => {
-                            @this.addChat(data.ai_response, 'Interviewer', 'received');
-                            t.scroll();
-                            t.disabled = false;
-                            t.loading = false;
-                        };
-                    });
+                send(blob) {
+                    @this.$upload('audioBlob', blob);
                 }
             }))
         })
 
         document.addEventListener('DOMContentLoaded', function () {
+
+            function scrollChat()
+            {
+                const chat = document.getElementById('chat');
+                chat.scroll({
+                    top: chat.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }
+                
+            @this.on('play-audio', (params) => {
+                @this.set('disabled', true);
+                @this.set('loading', true);
+                const { audioUrl, transcription } = params[0];
+
+                const audioElement = new Audio(audioUrl);
+
+                audioElement.onended = () => {
+                    @this.addChat(transcription, 'Interviewer', 'received');
+                    @this.set('disabled', false);
+                    @this.set('loading', false);
+                    @this.dispatch('new-chat');
+                };
+
+                audioElement.play();
+            })
+
+            window.addEventListener('new-chat', event => {
+                setTimeout(scrollChat, 50);
+            });
+
             navigator.mediaDevices.getUserMedia({audio:true,video:true}).then( () => {
                 navigator.mediaDevices.enumerateDevices().then(function (devices) {
                     for(var i = 0; i < devices.length; i ++){
@@ -220,21 +210,6 @@
                             });
                     }
                 });
-            });
-
-            const chat = document.getElementById('chat');
-            chat.scroll({
-                top: chat.scrollHeight,
-                behavior: 'smooth'
-            });
-
-            window.addEventListener('new-chat', event => {
-                setTimeout(() => {
-                    chat.scroll({
-                        top: chat.scrollHeight,
-                        behavior: 'smooth'
-                    });
-                }, 50);
             });
         });
     </script>
