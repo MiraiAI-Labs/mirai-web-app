@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Home;
 
-use Livewire\Component;
+use App\Livewire\BaseController;
 
-class Interview extends Component
+class Interview extends BaseController
 {
     public $chats = [];
 

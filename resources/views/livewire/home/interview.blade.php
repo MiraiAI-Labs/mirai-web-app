@@ -3,7 +3,10 @@
 @endsection
 
 <div class="drawer-content-container">
-    <h3 class="col-span-1 md:col-span-2 text-2xl font-bold">Mockup Interview</h3>
+    <section class="w-full flex justify-center mb-4">
+        <livewire:components.choose-position :showResetPosition="true" />
+    </section>
+    <h2 class="text-2xl font-bold">Mockup Interview</h2>
     <section class="grid grid-cols-1 md:grid-cols-2 gap-4 h-4/5 mt-4 relative" x-data="interview">
         <div class="bg-base-100 rounded-xl flex justify-center items-center min-h-80 col-span-2" x-show="!started">
             <button class="btn btn-lg btn-neutral" x-on:click="start()">Mulai Interview</button>

@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Home;
 
-use Livewire\Component;
+use App\Livewire\BaseController;
 
-class Home extends Component
+class Home extends BaseController
 {
     public function render()
     {

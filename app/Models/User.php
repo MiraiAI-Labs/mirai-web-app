@@ -47,6 +47,7 @@ class User extends Authenticatable
     protected $appends = [
         'first_name',
         'last_name',
+        'positionChosen',
     ];
 
     public function getFirstNameAttribute(): string
@@ -59,6 +60,16 @@ class User extends Authenticatable
         $name = explode(' ', $this->name);
 
         return (count($name) > 2) ? $name[2] : $name[1];
+    }
+
+    public function getPositionChosenAttribute(): bool
+    {
+        return $this->position()->exists();
+    }
+
+    public function position()
+    {
+        return $this->belongsTo(Position::class);
     }
 
     public static function createIfNotExists(array $attributes): ?User

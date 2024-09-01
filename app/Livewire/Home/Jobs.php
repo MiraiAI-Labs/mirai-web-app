@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Home;
 
-use Livewire\Component;
+use App\Livewire\BaseController;
 
-class Jobs extends Component
+class Jobs extends BaseController
 {
     public function render()
     {

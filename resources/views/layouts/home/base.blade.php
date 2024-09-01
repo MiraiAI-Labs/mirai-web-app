@@ -17,7 +17,8 @@
                 @include('layouts.home.footer')
             </div>
 
-            @include('layouts.home.sidebar')
+            {{-- @include('layouts.home.sidebar') --}}
+            <livewire:components.sidebar :activeTab="$activeTab ?? 'home'"/>
         </div>
     </div>
 @endsection

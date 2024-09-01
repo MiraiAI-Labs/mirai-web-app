@@ -11,14 +11,17 @@ class DatabaseSeeder extends Seeder
         'local' => [
             RoleSeeder::class,
             UserSeeder::class,
+            PositionsSeeder::class,
         ],
         'staging' => [
             RoleSeeder::class,
             UserSeeder::class,
+            PositionsSeeder::class,
         ],
         'production' => [
             RoleSeeder::class,
             UserSeeder::class,
+            PositionsSeeder::class,
         ],
     ];
     /**

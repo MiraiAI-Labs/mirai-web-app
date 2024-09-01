@@ -2,12 +2,12 @@
 
 namespace App\Livewire\User;
 
+use App\Livewire\BaseController;
 use App\Models\User;
 use Closure;
-use Livewire\Component;
 use App\Traits\ToastDispatchable;
 
-class Password extends Component
+class Password extends BaseController
 {
     use ToastDispatchable;
 

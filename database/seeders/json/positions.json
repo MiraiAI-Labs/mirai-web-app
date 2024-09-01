@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Frontend Developer",
+        "slug": "frontend-developer",
+        "description": "Frontend Developer"
+    },
+    {
+        "name": "Backend Developer",
+        "slug": "backend-developer",
+        "description": "Backend Developer"
+    },
+    {
+        "name": "Fullstack Developer",
+        "slug": "fullstack-developer",
+        "description": "Fullstack Developer"
+    },
+    {
+        "name": "DevOps Engineer",
+        "slug": "devops-engineer",
+        "description": "DevOps Engineer"
+    },
+    {
+        "name": "SecOps Engineer",
+        "slug": "secops-engineer",
+        "description": "SecOps Engineer"
+    },
+    {
+        "name": "QA Engineer",
+        "slug": "qa-engineer",
+        "description": "QA Engineer"
+    },
+    {
+        "name": "Project Manager",
+        "slug": "project-manager",
+        "description": "Project Manager"
+    },
+    {
+        "name": "Product Manager",
+        "slug": "product-manager",
+        "description": "Product Manager"
+    },
+    {
+        "name": "UI/UX Designer",
+        "slug": "ui-ux-designer",
+        "description": "UI/UX Designer"
+    },
+    {
+        "name": "Data Scientist",
+        "slug": "data-scientist",
+        "description": "Data Scientist"
+    },
+    {
+        "name": "Data Engineer",
+        "slug": "data-engineer",
+        "description": "Data Engineer"
+    },
+    {
+        "name": "Data Analyst",
+        "slug": "data-analyst",
+        "description": "Data Analyst"
+    }
+]

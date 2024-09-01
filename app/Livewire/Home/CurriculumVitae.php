@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Home;
 
-use Livewire\Component;
+use App\Livewire\BaseController;
 
-class CurriculumVitae extends Component
+class CurriculumVitae extends BaseController
 {
     public function render()
     {

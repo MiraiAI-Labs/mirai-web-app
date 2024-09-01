@@ -5,15 +5,17 @@
         <li class="my-1">
             <a href={{ route('home') }} class="{{ ($activeTab ?? null) == 'home' ? 'active' : '' }}"><i class="fa-solid fa-house"></i>Dashboard</a>
         </li>
-        <li class="my-1">
-            <a href={{ route('cv') }} class="{{ ($activeTab ?? null) == 'cv' ? 'active' : '' }}"><i class="fa-solid fa-file-lines"></i>CV Analysis</a>
-        </li>
-        <li class="my-1">
-            <a href={{ route('interview') }} class="{{ ($activeTab ?? null) == 'interview' ? 'active' : '' }}"><i class="fa-solid fa-microphone-lines"></i>Practice Interview</a>
-        </li>
-        <li class="my-1">
-            <a href={{ route('jobs') }} class="{{ ($activeTab ?? null) == 'jobs' ? 'active' : '' }}"><i class="fa-solid fa-square-poll-vertical"></i>Jobs Results</a>
-        </li>
+        @if(auth()->user()->positionChosen)
+            <li class="my-1">
+                <a href={{ route('cv') }} class="{{ ($activeTab ?? null) == 'cv' ? 'active' : '' }}"><i class="fa-solid fa-file-lines"></i>CV Analysis</a>
+            </li>
+            <li class="my-1">
+                <a href={{ route('interview') }} class="{{ ($activeTab ?? null) == 'interview' ? 'active' : '' }}"><i class="fa-solid fa-microphone-lines"></i>Practice Interview</a>
+            </li>
+            <li class="my-1">
+                <a href={{ route('jobs') }} class="{{ ($activeTab ?? null) == 'jobs' ? 'active' : '' }}"><i class="fa-solid fa-square-poll-vertical"></i>Job Vacancies</a>
+            </li>
+        @endif
         <li class="my-1">
             <a href={{ route('user.password') }} class="{{ ($activeTab ?? null) == 'account' ? 'active' : '' }}"><i class="fa-solid fa-user"></i>Akun</a>
         </li>

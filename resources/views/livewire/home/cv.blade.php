@@ -3,7 +3,10 @@
 @endsection
 
 <div class="drawer-content-container">
-    <h3 class="col-span-1 md:col-span-2 text-2xl font-bold">Curriculum Vitae Analysis</h3>
+    <section class="w-full flex justify-center mb-4">
+        <livewire:components.choose-position :showResetPosition="true" />
+    </section>
+    <h2 class="col-span-1 md:col-span-2 text-2xl font-bold">Curriculum Vitae Analysis</h2>
     <section class="grid grid-cols-1 md:grid-cols-2 gap-4 h-4/5 mt-4">
         <div class="bg-base-100 rounded-xl flex justify-center items-center">
             <input type="file" class="file-input file-input-bordered w-full max-w-xs pop-anim" />
