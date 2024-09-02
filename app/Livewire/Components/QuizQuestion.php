@@ -24,21 +24,23 @@ class QuizQuestion extends BaseController
 
     public function mount()
     {
-        $this->radioStyle = array_fill(0, count($this->options), '');
-        $this->labelStyle = $this->radioStyle;
+        $this->radioStyle = $this->labelStyle = array_fill(0, count($this->options), '');
+    }
+
+    public function isOptionAnAnswer($option)
+    {
+        return md5($option . base64_decode(substr(env('APP_KEY'), 7))) == $this->answer;
     }
 
     public function updatedChosenOption($value)
     {
         $this->chosen = true;
 
-        $salt = base64_decode(substr(env('APP_KEY'), 7));
-
         foreach ($this->options as $key => $option) {
-            $rightOption = md5($option . $salt) == $this->answer;
+            $rightOption = $this->isOptionAnAnswer($option);
             $this->radioStyle[$key] = $rightOption ? 'checked-success' : 'checked-error';
 
-            if ($key == $value) {
+            if (($key == $value) || $rightOption) {
                 $this->labelStyle[$key] = $rightOption ? 'input-success' : 'input-error';
             }
         }

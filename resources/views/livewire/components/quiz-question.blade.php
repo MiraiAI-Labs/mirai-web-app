@@ -5,7 +5,7 @@
             @foreach($options as $no => $option)
                 <label class="label cursor-pointer p-4 rounded-xl input input-bordered input-checkbox {{ $labelStyle[$no] }} gap-6">
                     <span class="label-text p-2">{{ $option ?? '' }}</span>
-                    <input type="radio" name="answer" class="radio {{ $radioStyle[$no] }}" x-bind:disabled="chosen" wire:model.change="chosenOption" value="{{ $no }}"/>
+                    <input type="radio" name="answer-{{ $no }}" class="radio {{ $radioStyle[$no] }}" x-bind:disabled="chosen" wire:model.change="chosenOption" value="{{ $no }}" />
                 </label>
             @endforeach
         </div>

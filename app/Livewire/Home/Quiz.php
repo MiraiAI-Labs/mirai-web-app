@@ -50,6 +50,8 @@ class Quiz extends BaseController
         $this->questions = $response->json()['quiz'];
 
         $this->loaded = true;
+
+        $this->dispatch('questions-loaded');
     }
 
     public function nextQuestion()
@@ -64,6 +66,15 @@ class Quiz extends BaseController
         }
 
         $this->currentQuestion++;
+    }
+
+    public function timeout()
+    {
+        $this->toastError('Quiz timed out');
+        $this->currentQuestion = 0;
+        $this->loaded = false;
+        $this->loading = false;
+        $this->dispatch('quizCompleted');
     }
 
     public function render()
