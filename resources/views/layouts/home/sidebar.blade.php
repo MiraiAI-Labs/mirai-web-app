@@ -13,6 +13,9 @@
                 <a href={{ route('interview') }} class="{{ ($activeTab ?? null) == 'interview' ? 'active' : '' }}"><i class="fa-solid fa-microphone-lines"></i>Practice Interview</a>
             </li>
             <li class="my-1">
+                <a href={{ route('quiz') }} class="{{ ($activeTab ?? null) == 'quiz' ? 'active' : '' }}"><i class="fa-solid fa-clipboard-question"></i>Quiz Exercise</a>
+            </li>
+            <li class="my-1">
                 <a href={{ route('jobs') }} class="{{ ($activeTab ?? null) == 'jobs' ? 'active' : '' }}"><i class="fa-solid fa-square-poll-vertical"></i>Job Vacancies</a>
             </li>
         @endif

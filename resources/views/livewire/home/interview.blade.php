@@ -115,6 +115,7 @@
 
                     this.mediaRecorder.onstop = () => {
                         this.loading = true;
+                        this.disabled = true;
                         
                         @this.dispatch('new-chat');
 

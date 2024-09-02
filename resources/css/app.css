@@ -290,3 +290,19 @@ video.flipped {
     transform: scaleX(-1);
 }
 /* Toastr Styling End */
+
+.checked-success {
+    @apply checked:!bg-green-500;
+}
+
+.checked-success:disabled {
+    @apply opacity-100;
+}
+
+.checked-error {
+    @apply checked:!bg-red-500;
+}
+
+.checked-error:disabled {
+    @apply opacity-100;
+}
