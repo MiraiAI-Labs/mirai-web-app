@@ -16,9 +16,4 @@ class Position extends Model
     {
         return strtolower(str_replace(' ', '-', $this->name));
     }
-
-    public function stacks()
-    {
-        return $this->hasMany(PositionStack::class);
-    }
 }

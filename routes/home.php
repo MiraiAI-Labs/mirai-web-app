@@ -32,3 +32,5 @@ Route::middleware('auth')->group(function () {
             ->name('user.password');
     });
 });
+
+Route::webhooks('/webhook');

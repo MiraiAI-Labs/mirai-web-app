@@ -19,5 +19,9 @@
         "tailwindcss": "^3.0",
         "toastr": "^2.1.4",
         "vite": "^5.0.0"
+    },
+    "dependencies": {
+        "chart.js": "^4.4.4",
+        "chartjs-chart-wordcloud": "^4.4.1"
     }
 }

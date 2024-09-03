@@ -11,16 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('position_stacks', function (Blueprint $table) {
+        Schema::create('jobs_analysis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('rank');
-            $table->string('name');
-            $table->unsignedBigInteger('position_id');
+            $table->string('file_path');
+            $table->unsignedBigInteger('position_id')->nullable();
             $table->foreign('position_id')->references('id')->on('positions');
-            $table->date('date');
             $table->timestamps();
-
-            $table->unique(['position_id', 'rank']);
         });
     }
 
@@ -29,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('position_stacks');
+        Schema::dropIfExists('jobs_analysis');
     }
 };

@@ -6,7 +6,7 @@ import livewire from '@defstudio/vite-livewire-plugin';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ["resources/css/app.css", "resources/js/app.js", "resources/js/hero-swiper.js"],
+            input: ["resources/css/app.css", "resources/js/app.js", "resources/js/hero-swiper.js", "resources/js/chart.js"],
         }),
         
         livewire({
