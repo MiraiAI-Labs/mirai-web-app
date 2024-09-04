@@ -11,6 +11,11 @@ class Home extends BaseController
 {
     use ToastDispatchable;
 
+    protected $listeners = [
+        'refresh' => 'fetchAnalysis',
+        'refreshComponent' => '$refresh',
+    ];
+
     public $fetched = false;
     public $fetching = false;
 
@@ -20,6 +25,11 @@ class Home extends BaseController
 
     public function mount()
     {
+        $this->fetchAnalysis();
+    }
+
+    public function fetchAnalysis()
+    {
         $user = User::find(auth()->user()->id);
 
         $this->position_id = $user->position_id;
@@ -27,10 +37,11 @@ class Home extends BaseController
         if ($this->position_id)
             $this->fetched = JobsAnalysis::fetched($this->position_id);
 
-
         $api_url = env("JOB_API_URL", "http://localhost:8001");
         if ($this->fetched)
             $this->analysis_json = json_decode(file_get_contents($api_url . "/" . JobsAnalysis::where('position_id', $this->position_id)->orderBy('created_at', 'desc')->first()->file_path), true);
+
+        $this->dispatch('refreshComponent');
     }
 
     public function fetch()

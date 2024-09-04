@@ -6,6 +6,7 @@
                 this.text = target.innerText;
                 @this.set('selectedPosition', this.selected);
                 @this.set('textPosition', this.text);
+                @this.dispatch('refresh')
             },
             pick(id, name) {
                 this.selected = id;
