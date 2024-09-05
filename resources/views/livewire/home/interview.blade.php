@@ -6,15 +6,10 @@
     <section class="w-full flex justify-center mb-4">
         <livewire:components.choose-position :showResetPosition="true" />
     </section>
-    <h2 class="text-2xl font-bold">Mockup Interview</h2>
+    <h2 class="text-2xl font-bold">Practice Interview</h2>
     <section class="grid grid-cols-1 md:grid-cols-2 gap-4 h-4/5 mt-4 relative" x-data="interview">
         <div class="bg-base-100 rounded-xl flex justify-center items-center min-h-80 col-span-2" x-show="!started">
             <button class="btn btn-lg btn-neutral" x-on:click="start()">Mulai Interview</button>
-        </div>
-        <div x-show="started" class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-base-100 rounded-xl p-6"><span x-text="tegap ? 'Sudah' : 'Belum'"></span> Tegap</div>
-            <div class="bg-base-100 rounded-xl p-6"><span x-text="facingCamera ? 'Sudah' : 'Belum'"></span> Hadap Kamera</div>
-            <div class="bg-base-100 rounded-xl p-6">Bahu <span x-text="shoulderShown ? 'Sudah' : 'Belum'"></span> Terlihat</div>
         </div>
         <div class="bg-base-100 rounded-xl flex justify-center items-center min-h-80 relative" x-show="started">
             <video id="camera" class="aspect-video w-full flipped" autoplay></video>
@@ -58,6 +53,11 @@
                     </div>
                 </div>
             </main>
+        </div>
+        <div x-show="started" class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="text-white rounded-xl p-6" :class="tegap ? 'btn-success' : 'btn-error'" x-text="!tegap ? 'Tegapkan Badan!' : 'Badan sudah tegap' "></div>
+            <div class="text-white rounded-xl p-6" :class="facingCamera ? 'btn-success' : 'btn-error'" x-text="!facingCamera ? 'Hadap Kamera!' : 'Sudah menghadap kamera' "></div>
+            <div class="text-white rounded-xl p-6" :class="shoulderShown ? 'btn-success' : 'btn-error'" x-text="!shoulderShown ? 'Posisikan bahu terlihat!' : 'Bahu sudah terlihat' "></div>
         </div>
     </section>
 </div>
