@@ -19,6 +19,9 @@ class Jobs extends BaseController
     public $location;
     public $job_type;
     public $description;
+    public $url;
+    public $company_url;
+    public $salary;
 
     public function mount()
     {
@@ -31,7 +34,7 @@ class Jobs extends BaseController
 
         if ($this->position_id && $file_path) {
             $file = fopen("$api_url/$file_path", 'r');
-            $first_line = fgetcsv($file);
+            fgetcsv($file);
 
             while (!feof($file)) {
                 $line = fgetcsv($file);
@@ -44,6 +47,9 @@ class Jobs extends BaseController
                         'date_posted' => $line[8],
                         'location' => $line[6],
                         'description' => $line[20],
+                        'url' => $line[2],
+                        'company_url' => $line[21],
+                        'salary' => $line[9],
                     ];
                 }
             }
@@ -64,6 +70,9 @@ class Jobs extends BaseController
         $this->location = $job['location'];
         $this->job_type = $job['job_type'];
         $this->description = $job['description'];
+        $this->url = $job['url'];
+        $this->company_url = $job['company_url'];
+        $this->salary = $job['salary'];
     }
 
     public function render()

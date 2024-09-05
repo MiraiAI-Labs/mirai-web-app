@@ -9,17 +9,6 @@
         <h2 class="mt-6 text-center text-3xl font-extrabold leading-9">
             {{ __('messages.auth.login.heading') }}
         </h2>
-        @if (Route::has('register'))
-            <p class="max-w mt-2 text-center text-sm leading-5">
-                Or
-                <a
-                    class="link"
-                    href="{{ route('register') }}"
-                >
-                    {{ __('messages.auth.login.register') }}
-                </a>
-            </p>
-        @endif
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -95,6 +84,17 @@
                     </span>
                 </div>
             </form>
+            @if (Route::has('register'))
+                <p class="max-w mt-2 text-center text-sm leading-5">
+                    Or
+                    <a
+                        class="link"
+                        href="{{ route('register') }}"
+                    >
+                        {{ __('messages.auth.login.register') }}
+                    </a>
+                </p>
+            @endif
         </div>
     </div>
 </div>

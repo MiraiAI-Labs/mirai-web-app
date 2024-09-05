@@ -34,14 +34,15 @@ class Home extends BaseController
 
         $this->position_id = $user->position_id;
 
-        if ($this->position_id)
+        if ($this->position_id) {
             $this->fetched = JobsAnalysis::fetched($this->position_id);
 
-        $api_url = env("JOB_API_URL", "http://localhost:8001");
-        if ($this->fetched)
-            $this->analysis_json = json_decode(file_get_contents($api_url . "/" . JobsAnalysis::where('position_id', $this->position_id)->orderBy('created_at', 'desc')->first()->file_path), true);
+            $api_url = env("JOB_API_URL", "http://localhost:8001");
+            if ($this->fetched)
+                $this->analysis_json = json_decode(file_get_contents($api_url . "/" . JobsAnalysis::where('position_id', $this->position_id)->orderBy('created_at', 'desc')->first()->file_path), true);
 
-        $this->dispatch('refreshComponent');
+            $this->dispatch('refreshComponent');
+        }
     }
 
     public function fetch()

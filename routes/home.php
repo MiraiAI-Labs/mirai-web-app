@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Home\Quiz;
 use App\Http\Middleware\PositionChosen;
 
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
+
 Route::middleware('auth')->group(function () {
     Route::get('/', Home::class)
         ->name('home');
