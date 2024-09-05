@@ -39,7 +39,7 @@
         </div>
     </section>
     <section class="mt-4" x-show="!loaded">
-        <div class="bg-base-100 rounded-xl flex justify-center items-center min-h-80 p-12 flex-col items-center">
+        <div class="shadow bg-base-100 rounded-xl flex justify-center items-center min-h-80 p-12 flex-col items-center">
             <button class="btn btn-lg btn-neutral" x-on:click="start()" x-show="!loading && !loaded">Mulai Quiz</button>
             <span class="loading loading-spinner w-16" x-show="loading && !loaded"></span>
         </div>

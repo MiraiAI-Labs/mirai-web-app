@@ -5,7 +5,7 @@ Ganti Password
 <div class="drawer-content-container">
     <form class="w-full h-full grid grid-cols-2 gap-4" wire:submit.prevent="submit">
         <h3 class="col-span-2 text-2xl font-bold">Ganti Kata Sandi</h3>
-        <div class="container bg-base-100 grid grid-cols-1 gap-4 md:col-span-1 col-span-2 rounded-xl p-6">
+        <div class="container shadow bg-base-100 grid grid-cols-1 gap-4 md:col-span-1 col-span-2 rounded-xl p-6">
             <label class="col-span-1 md:col-span-1 form-control w-full">
                 <div class="label">
                     <span class="label-text">Kata Sandi Saat Ini</span>

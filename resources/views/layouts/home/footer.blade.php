@@ -1,13 +1,13 @@
-<footer class="footer bg-neutral text-neutral-content p-10">
+<footer class="footer bg-base-300 text-neutral-content p-10 flex">
     <aside>
-        <x-logo class="h-8 w-auto" mode="dark" />
+        <x-logo class="h-8 w-auto" />
         <div>
-            <p class="text-lg font-semibold">
-                Mirai
-            </p>
-            <span class="text-xs">
-                Lorem Ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <span class="text-black dark:text-white text-md">
+                Bukan cuma diterima, tapi jadi pilihan utama.
             </span>
         </div>
+    </aside>
+    <aside class="ml-auto">
+        <span class="text-black dark:text-white text-md">Made with <i class="fa-solid fa-heart text-[red]"></i> by Mirai Team</span>
     </aside>
 </footer>

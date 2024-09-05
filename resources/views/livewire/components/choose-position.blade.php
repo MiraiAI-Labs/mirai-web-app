@@ -13,6 +13,7 @@
                 this.text = name;
                 @this.set('selectedPosition', this.selected);
                 @this.set('textPosition', this.text);
+                @this.dispatch('refresh')
             }
         }">
     <div class="dropdown w-full">

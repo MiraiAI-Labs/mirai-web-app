@@ -112,7 +112,7 @@
 
         const mini = Math.min(...sampleValues);
         const maxi = Math.max(...sampleValues);
-        const normalized = sampleValues.map((value) => (value - mini) / (maxi - mini) * 80 + 10);
+        const normalized = sampleValues.map((value) => (value - mini) / (maxi - mini) * 40 + 10);
 
         const data = {
             labels: sampleKeys,

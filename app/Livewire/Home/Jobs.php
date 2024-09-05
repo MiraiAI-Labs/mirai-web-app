@@ -25,6 +25,11 @@ class Jobs extends BaseController
 
     public function mount()
     {
+        $this->fetchJobs();
+    }
+
+    public function fetchJobs()
+    {
         $user = User::find(auth()->user()->id);
 
         $this->position_id = $user->position_id;

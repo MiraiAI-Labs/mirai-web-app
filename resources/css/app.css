@@ -89,7 +89,7 @@
     }
 
     .drawer-content-container {
-        min-height: calc(100vh - 4rem - 168px); /* 4rem = header height, 168px = footer height */
+        min-height: calc(100vh - 4rem - 140px); /* 4rem = header height, 168px = footer height */
         @apply p-6;
         @apply w-full;
     }

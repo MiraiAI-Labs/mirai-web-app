@@ -4,7 +4,7 @@
 @section('body')
     <div>
         @include('layouts.home.navbar', ['activeTab' => $activeTab ?? 'home'])
-        <div class="drawer lg:drawer-open pt-16 bg-base-200">
+        <div class="drawer lg:drawer-open pt-16 bg-base-300">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content lg:ml-56">
                 <!-- Page content here -->

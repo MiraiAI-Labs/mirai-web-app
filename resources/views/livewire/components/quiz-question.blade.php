@@ -1,4 +1,4 @@
-<div class="bg-base-100 rounded-xl flex justify-center items-center min-h-80 p-12 flex-col items-center" x-data="{ chosen: @entangle('chosen') }">
+<div class="shadow bg-base-100 rounded-xl flex justify-center items-center min-h-80 p-12 flex-col items-center" x-data="{ chosen: @entangle('chosen') }">
     <header class="font-xl font-semibold">{{ $question ?? '' }}</header>
     <main class="mt-4 w-full flex flex-col">
         <div class="form-control gap-6 grid grid-cols-1 md:grid-cols-2">
