@@ -111,6 +111,10 @@
  * .skew-45 { ... }
  */
 
+ html, body {
+    scroll-behavior: smooth;
+ }
+
 [x-cloak] {
     display: none;
 }
@@ -305,4 +309,35 @@ video.flipped {
 
 .checked-error:disabled {
     @apply opacity-100;
+}
+
+/* landig page */
+
+.fitur-bg.dark {
+    background: linear-gradient(to right, #191919 0%, #222222 50%, #191919 100%);
+}
+
+.fitur-bg.light {
+    /* background: linear-gradient(to right, #f9f9f9 0%, #f1f1f1 50%, #f9f9f9 100%); */
+    background: radial-gradient(circle at 0% 0.5%, rgb(241, 241, 242) 0.1%, rgb(224, 226, 228) 100.2%);
+}
+
+.hero-mirai.dark {
+    background: radial-gradient(circle at 24.1% 68.8%, rgb(25, 25, 25) 0%, rgb(0, 0, 0) 99.4%);
+}
+
+.hero-mirai.light {
+    background: radial-gradient(circle at 24.1% 68.8%, #fdfbfb 0%, #ebedee 99.4%);
+}
+
+.hero-mirai > h1.dark {
+    background: linear-gradient(to right, #ffffff 0%, #999999 100%);
+}
+
+.hero-mirai > h1.light {
+    background: linear-gradient(to right, #000000 0%, #999999 100%);
+}
+
+.mirai-gradient {
+    background: linear-gradient(to right, #FF83F3 0%, #0094FF 100%);
 }

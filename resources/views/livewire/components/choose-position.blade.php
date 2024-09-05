@@ -2,6 +2,8 @@
             selected: @entangle('selectedPosition'),
             text: @entangle('textPosition'),
             choose(target) {
+                if(@this.get('landingPage'))
+                    window.location.href = '{{ route('home') }}';
                 this.selected = target.getAttribute('value');
                 this.text = target.innerText;
                 @this.set('selectedPosition', this.selected);
@@ -9,6 +11,8 @@
                 @this.dispatch('refresh')
             },
             pick(id, name) {
+                if(@this.get('landingPage'))
+                    window.location.href = '{{ route('home') }}';
                 this.selected = id;
                 this.text = name;
                 @this.set('selectedPosition', this.selected);

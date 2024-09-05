@@ -26,6 +26,8 @@ class ChoosePosition extends BaseController
     public $currentRouteName;
     public $middlewares;
 
+    public $landingPage = false;
+
     public function mount()
     {
         $this->positions = Position::all();
@@ -34,9 +36,11 @@ class ChoosePosition extends BaseController
 
         $this->recommendations = $this->positions->random(5);
 
-        $user = User::find(auth()->id());
-        $this->selectedPosition = $user->position_id ?? 0;
-        $this->textPosition = ($this->selectedPosition !== 0) ? $user->position->name : '';
+        if (!$this->landingPage) {
+            $user = User::find(auth()->id());
+            $this->selectedPosition = $user->position_id ?? 0;
+            $this->textPosition = ($this->selectedPosition !== 0) ? $user->position->name : '';
+        }
 
         $this->currentRouteName = request()->route()->getName();
         $this->middlewares = request()->route()->middleware();
@@ -51,6 +55,9 @@ class ChoosePosition extends BaseController
 
     public function updatedSelectedPosition()
     {
+        if ($this->landingPage)
+            return;
+
         $user = User::find(auth()->id());
 
         if ($this->selectedPosition !== 0 && Position::find($this->selectedPosition) === null) {
