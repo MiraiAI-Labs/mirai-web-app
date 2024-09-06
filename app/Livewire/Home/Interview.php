@@ -90,7 +90,10 @@ class Interview extends BaseController
 
         $stringifiedQueries = http_build_query($queries);
 
-        $response = Http::withOptions(['verify' => false])->attach('audio', file_get_contents($this->audioBlob->getRealPath()), 'audio.wav')
+        $context = ['http' => ['method' => 'GET'], 'ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true]];
+        $context = stream_context_create($context);
+
+        $response = Http::withOptions(['verify' => false])->attach('audio', file_get_contents($this->audioBlob->getRealPath(), false, $context), 'audio.wav')
             ->post("$this->api_url/speak?$stringifiedQueries");
 
         unlink($this->audioBlob->getRealPath());
