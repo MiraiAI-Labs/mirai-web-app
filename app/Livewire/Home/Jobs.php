@@ -38,7 +38,9 @@ class Jobs extends BaseController
         $file_path = JobLists::where('position_id', $this->position_id)->orderBy('created_at', 'desc')->first()->file_path;
 
         if ($this->position_id && $file_path) {
-            $file = fopen("$api_url/$file_path", 'r');
+            $context = ['http' => ['method' => 'GET'], 'ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true]];
+            $context = stream_context_create($context);
+            $file = fopen("$api_url/$file_path", 'r', false, $context);
             fgetcsv($file);
 
             while (!feof($file)) {
