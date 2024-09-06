@@ -62,7 +62,7 @@ class Interview extends BaseController
 
     public function start()
     {
-        $response = Http::get("$this->api_url/config");
+        $response = Http::withOptions(['verify' => false])->get("$this->api_url/config");
 
         $welcomeAudioUrl = $response->json()['tts_service'] === 'openai' ?
             "$this->api_url/static/welcoming/welcoming-alloy.wav" :
@@ -90,7 +90,7 @@ class Interview extends BaseController
 
         $stringifiedQueries = http_build_query($queries);
 
-        $response = Http::attach('audio', file_get_contents($this->audioBlob->getRealPath()), 'audio.wav')
+        $response = Http::withOptions(['verify' => false])->attach('audio', file_get_contents($this->audioBlob->getRealPath()), 'audio.wav')
             ->post("$this->api_url/speak?$stringifiedQueries");
 
         unlink($this->audioBlob->getRealPath());

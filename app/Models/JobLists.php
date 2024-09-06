@@ -48,7 +48,7 @@ class JobLists extends Model
 
         $job_list->save();
 
-        $response = Http::post("$api_url/generate_analysis", [
+        $response = Http::withOptions(['verify' => false])->post("$api_url/generate_analysis", [
             'text' => $position->name,
             'jobs_analysis_id' => $job_analysis->id,
             'job_lists_id' => $job_list->id,

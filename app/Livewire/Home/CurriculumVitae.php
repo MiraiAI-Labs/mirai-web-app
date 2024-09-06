@@ -31,7 +31,7 @@ class CurriculumVitae extends BaseController
 
         $cv_review = CVReview::upload($this->cv, auth()->user());
 
-        $response = Http::attach('file', file_get_contents($this->cv->getRealPath()), $this->cv->getClientOriginalName())
+        $response = Http::withOptions(['verify' => false])->attach('file', file_get_contents($this->cv->getRealPath()), $this->cv->getClientOriginalName())
             ->attach('job_analysis', file_get_contents("$api_url/$job_analysis->file_path"), basename($job_analysis->file_path, '.pdf'))
             ->post("$api_url/analyze_cv", [
                 'review_id' => $cv_review->id,

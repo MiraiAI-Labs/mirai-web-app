@@ -40,7 +40,7 @@ class Quiz extends BaseController
             'position' => $this->positionName,
         ]);
 
-        $response = Http::get("$this->api_url/generate_quiz?$stringifiedQueries");
+        $response = Http::withOptions(['verify' => false])->get("$this->api_url/generate_quiz?$stringifiedQueries");
 
         if (!$response->ok()) {
             $this->toastError('Failed to fetch quiz questions');
