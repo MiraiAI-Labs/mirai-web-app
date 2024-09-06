@@ -1,11 +1,28 @@
 services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: mirai/app
+        container_name: mirai-app
+        restart: unless-stopped
+        tty: true
+        environment:
+            SERVICE_NAME: app
+            SERVICE_TAGS: dev
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        networks:
+            - mirai
     webserver:
         image: nginx:alpine
         restart: unless-stopped
         tty: true
         volumes:
             - ./:/var/www
-            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+            - ./nginx/conf.d/:/etc/nginx/conf.d/
         ports:
             - "80:80"
         networks:
