@@ -5,6 +5,7 @@ namespace App\Livewire\Home;
 use App\Livewire\BaseController;
 use App\Models\CVReview;
 use App\Models\JobsAnalysis;
+use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use Livewire\WithFileUploads;
 use App\Traits\ToastDispatchable;
@@ -14,10 +15,34 @@ class CurriculumVitae extends BaseController
     use ToastDispatchable;
     use WithFileUploads;
 
+    protected $listeners = [
+        'refresh' => 'checkFetched',
+        'refreshComponent' => '$refresh',
+    ];
+
     public $cv;
     public $review = "";
 
     public $loading = false;
+
+    public function mount()
+    {
+        $this->checkFetched();
+    }
+
+    public function checkFetched()
+    {
+        $user = User::find(auth()->user()->id);
+        $position_id = $user->position_id;
+
+        $fetched = JobsAnalysis::fetched($position_id);
+
+        if (!$fetched) {
+            redirect()->route('home')->with('toast', ['type' => 'error', 'message' => 'Please generate job analysis first']);
+        }
+
+        $this->dispatch('refreshComponent');
+    }
 
     public function updatedCv()
     {

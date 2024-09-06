@@ -3,6 +3,7 @@
 namespace App\Livewire\Home;
 
 use App\Livewire\BaseController;
+use App\Models\JobsAnalysis;
 use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use Livewire\WithFileUploads;
@@ -10,6 +11,11 @@ use Livewire\WithFileUploads;
 class Interview extends BaseController
 {
     use WithFileUploads;
+
+    protected $listeners = [
+        'refresh' => 'checkFetched',
+        'refreshComponent' => '$refresh',
+    ];
 
     public $chats = [];
 
@@ -37,6 +43,22 @@ class Interview extends BaseController
 
         $this->sessionIdentifier = uniqid($user->id . '_');
         $this->positionName = $user->position->name;
+
+        $this->checkFetched();
+    }
+
+    public function checkFetched()
+    {
+        $user = User::find(auth()->user()->id);
+        $position_id = $user->position_id;
+
+        $fetched = JobsAnalysis::fetched($position_id);
+
+        if (!$fetched) {
+            redirect()->route('home')->with('toast', ['type' => 'error', 'message' => 'Please generate job analysis first']);
+        }
+
+        $this->dispatch('refreshComponent');
     }
 
     public function addChat($message, $name, $type)

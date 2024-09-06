@@ -4,11 +4,17 @@ namespace App\Livewire\Home;
 
 use App\Livewire\BaseController;
 use App\Models\JobLists;
+use App\Models\JobsAnalysis;
 use App\Models\User;
 
 class Jobs extends BaseController
 {
     public $position_id;
+
+    protected $listeners = [
+        'refresh' => 'checkFetched',
+        'refreshComponent' => '$refresh',
+    ];
 
     public $jobs = [];
     public $current_job = 0;
@@ -25,7 +31,23 @@ class Jobs extends BaseController
 
     public function mount()
     {
+        $this->checkFetched();
+
         $this->fetchJobs();
+    }
+
+    public function checkFetched()
+    {
+        $user = User::find(auth()->user()->id);
+        $position_id = $user->position_id;
+
+        $fetched = JobsAnalysis::fetched($position_id);
+
+        if (!$fetched) {
+            redirect()->route('home')->with('toast', ['type' => 'error', 'message' => 'Please generate job analysis first']);
+        }
+
+        $this->dispatch('refreshComponent');
     }
 
     public function fetchJobs()
@@ -35,7 +57,7 @@ class Jobs extends BaseController
         $this->position_id = $user->position_id;
 
         $api_url = env("JOB_API_URL", "http://localhost:8001");
-        $file_path = JobLists::where('position_id', $this->position_id)->orderBy('created_at', 'desc')->first()->file_path;
+        $file_path = JobLists::where('position_id', $this->position_id)->orderBy('created_at', 'desc')->first()->file_path ?? null;
 
         if ($this->position_id && $file_path) {
             $context = ['http' => ['method' => 'GET'], 'ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true]];

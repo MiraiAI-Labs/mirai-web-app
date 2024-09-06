@@ -58,9 +58,9 @@
         // wait for document ready
         document.addEventListener('DOMContentLoaded', function() {
             toastrToast({
-                type: "{{ session('toast')['type'] }}",
-                title: "{{ session('toast')['title'] }}",
-                text: "{{ session('toast')['message'] }}",
+                type: "{{ session('toast')['type'] ?? '' }}",
+                title: "{{ session('toast')['title'] ?? '' }}",
+                text: "{{ session('toast')['message'] ?? '' }}",
             })
         }, false);
     </script>
