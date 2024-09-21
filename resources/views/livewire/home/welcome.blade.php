@@ -79,5 +79,5 @@
 </div>
 
 @section('scripts')
-    @vite('resources/js/hero-swiper.js')
+    <script></script>
 @endsection
