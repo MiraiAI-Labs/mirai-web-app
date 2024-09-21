@@ -22,7 +22,7 @@
         }">
     <div class="dropdown w-full">
         <label class="input input-bordered flex items-center gap-2 {{ $landingPage ? 'bg-transparent' : ''}}">
-            <input type="text" class="grow w-full bg-transparent" placeholder="{{ $landingPage ? 'Cari pekerjaan IT yang anda inginkan disini' : 'Pilih posisi'}}" x-bind:value="text" wire:keyup="search($event.target.value)"/>
+            <input type="text" class="grow w-full bg-transparent border-none focus:ring-0 focus:outline-none" placeholder="{{ $landingPage ? 'Cari pekerjaan IT yang anda inginkan disini' : 'Pilih posisi'}}" x-bind:value="text" wire:keyup="search($event.target.value)"/>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"

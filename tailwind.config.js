@@ -23,7 +23,10 @@ module.exports = {
         "./resources/**/*.vue",
         "./resources/**/*.twig",
     ],
-    plugins: [require("daisyui")],
+    plugins: [
+        require("daisyui"),
+        require('flowbite/plugin')
+    ],
     daisyui: {
         themes: true,
         logs: false,

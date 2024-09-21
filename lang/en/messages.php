@@ -4,7 +4,7 @@ return [
     'auth' => [
         'login' => [
             'title' => 'Sign In',
-            'heading' => env('APP_NAME', ''),
+            'heading' => 'Bukan cuma diterima, tapi jadi pilihan utama',
             'register' => 'Don\'t have an account?',
             'forgot' => 'Forgot your password?',
             'remember' => 'Remember me',
@@ -16,7 +16,7 @@ return [
         ],
         'register' => [
             'title' => 'Sign Up',
-            'heading' => env('APP_NAME', ''),
+            'heading' => 'Bukan cuma diterima, tapi jadi pilihan utama',
             'login' => 'Already have an account?',
             'forms' => [
                 'name' => 'Full name',

@@ -6,7 +6,7 @@
             <x-logo class="mx-auto h-16 w-auto" />
         </a>
 
-        <h2 class="mt-6 text-center text-3xl font-extrabold leading-9">
+        <h2 class="mt-6 text-center text-md font-semibold leading-9">
             {{ __('messages.auth.login.heading') }}
         </h2>
     </div>

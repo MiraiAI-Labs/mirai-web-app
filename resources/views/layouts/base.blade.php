@@ -19,6 +19,8 @@
         document.getElementsByTagName('html')[0].dataset.theme = JSON.parse(localStorage.getItem('userTheme')) ||
             (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet">
     <meta charset="utf-8">
     <meta
         name="viewport"
