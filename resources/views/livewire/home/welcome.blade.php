@@ -2,9 +2,13 @@
     Welcome to Mirai
 @endsection
 
-<div x-data="{}" style="scroll-behavior: smooth;">
-    <nav class="navbar bg-base-100/70 shadow-sm fixed backdrop-blur z-20 h-16">
-        <div class="navbar-start">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+</style>
+
+<div x-data="{}" style="scroll-behavior: smooth;" class="poppins-regular">
+    <nav class="navbar fixed transparent z-20 h-16 lg:px-28">
+        <div>
             <div class="sticky top-0 items-center gap-2 bg-opacity-90 lg:px-4 lg:py-2 flex justify-center">
                 <a href="{{ route('home') }}" aria-current="page" aria-label="Homepage" class="flex-0 px-2">
                     <x-logo class="mx-auto h-8 w-auto" />
@@ -12,20 +16,20 @@
             </div>
         </div>
 
-        <div class="gap-6">
+        <div class="ml-6 gap-16">
             <a href="#fitur" class="hover:cursor-pointer font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">Fitur</a>
             <a href="#tentang" class="hover:cursor-pointer font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">Tentang</a>
         </div>
 
 
-        <div class="navbar-end mr-4">
+        <div class="ml-auto mr-4">
             @auth
                 <a href="{{ route('home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-indigo-500">Home</a>
             @else
                 <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-indigo-500">Log in</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-indigo-500">Register</a>
+                    <a href="{{ route('register') }}" class="btn border-0 bg-gray-100 ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-800 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-indigo-500">Register</a>
                 @endif
             @endauth
         </div>
@@ -34,8 +38,8 @@
     <section class="pt-16 px-8 h-[600px] flex flex-col justify-center items-center hero-mirai" :class="document.getElementsByTagName('html')[0].dataset.theme == 'dark' ? 'dark' : 'light'">
         <h1 class="text-5xl font-bold text-center text-transparent !bg-clip-text p-1" :class="document.getElementsByTagName('html')[0].dataset.theme == 'dark' ? 'dark' : 'light'"">Bukan cuma diterima,</h1>
         <h1 class="text-5xl font-bold text-center text-transparent !bg-clip-text p-1" :class="document.getElementsByTagName('html')[0].dataset.theme == 'dark' ? 'dark' : 'light'"">tapi jadi pilihan utama.</h1>
-        <h2 class="text-lg text-center mt-8">Mirai hadir membantu Anda mempersiapkan keterampilan dan memberikan informasi</h2>
-        <h2 class="text-lg text-center mb-8">untuk mewujudkan karier IT impian Anda.</h2>
+        <h2 class="text-lg text-center mt-8 poppins-light">Mirai hadir membantu Anda mempersiapkan keterampilan dan memberikan informasi</h2>
+        <h2 class="text-lg text-center mb-8 poppins-light">untuk mewujudkan karier IT impian Anda.</h2>
         <livewire:components.choose-position :landingPage="true" />
     </section>
 

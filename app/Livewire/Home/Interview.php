@@ -43,7 +43,6 @@ class Interview extends BaseController
 
         $this->sessionIdentifier = uniqid($user->id . '_');
         $this->positionName = $user->position->name;
-
         $this->checkFetched();
     }
 

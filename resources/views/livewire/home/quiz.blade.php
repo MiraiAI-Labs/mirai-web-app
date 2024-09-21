@@ -9,29 +9,29 @@
     <h2 class="text-2xl font-bold">Quiz Exercise</h2>
     <section class="flex justify-between items-center" x-show="loaded">
         <div>
-            <span class="text-lg font-semibold" x-text="questionProgress()"></span>
+            <span class="text-lg md:text-xl font-semibold" x-text="questionProgress()"></span>
         </div>
         <div class="grid auto-cols-max grid-flow-col gap-5 text-center">
             <div class="flex flex-col text-sm" x-show="time().days > 0">
-              <span class="countdown font-mono text-xl">
+              <span class="countdown font-mono text-xl md:text-3xl">
                 <span x-bind:style="{ '--value': time().days }"></span>
               </span>
               days
             </div>
             <div class="flex flex-col text-sm" x-show="time().hours > 0">
-              <span class="countdown font-mono text-xl">
+              <span class="countdown font-mono text-xl md:text-3xl">
                 <span x-bind:style="{ '--value': time().hours }"></span>
               </span>
               hours
             </div>
             <div class="flex flex-col text-sm">
-              <span class="countdown font-mono text-xl">
+              <span class="countdown font-mono text-xl md:text-3xl">
                 <span x-bind:style="{ '--value': time().minutes }"></span>
               </span>
               min
             </div>
             <div class="flex flex-col text-sm">
-              <span class="countdown font-mono text-xl">
+              <span class="countdown font-mono text-xl md:text-3xl">
                 <span x-bind:style="{ '--value': time().seconds }"></span>
               </span>
               sec

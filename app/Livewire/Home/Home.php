@@ -75,6 +75,7 @@ class Home extends BaseController
         if ($this->fetched && !$fetchedBefore) {
             $this->fetching = false;
             $this->toastSuccess('Fetched successfully');
+            redirect()->route('home');
         }
     }
 

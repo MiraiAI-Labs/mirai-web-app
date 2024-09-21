@@ -1,4 +1,4 @@
-<div class="w-full md:w-4/5" x-data="{
+<div class="{{ $landingPage ? 'w-8/12' : 'w-full md:w-4/5' }}" x-data="{
             selected: @entangle('selectedPosition'),
             text: @entangle('textPosition'),
             choose(target) {
@@ -21,8 +21,8 @@
             }
         }">
     <div class="dropdown w-full">
-        <label class="input input-bordered flex items-center gap-2">
-            <input type="text" class="grow w-full bg-transparent" placeholder="Pilih posisi" x-bind:value="text" wire:keyup="search($event.target.value)"/>
+        <label class="input input-bordered flex items-center gap-2 {{ $landingPage ? 'bg-transparent' : ''}}">
+            <input type="text" class="grow w-full bg-transparent" placeholder="{{ $landingPage ? 'Cari pekerjaan IT yang anda inginkan disini' : 'Pilih posisi'}}" x-bind:value="text" wire:keyup="search($event.target.value)"/>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
