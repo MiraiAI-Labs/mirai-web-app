@@ -35,6 +35,9 @@ class Interview extends BaseController
     public $sessionIdentifier = null;
     public $positionName = "";
 
+    // 0 = HR, 1 = Tech
+    public $interviewType;
+
     public function mount()
     {
         $this->api_url = env("INTERVIEW_API_URL", "http://localhost:8000");
@@ -44,6 +47,25 @@ class Interview extends BaseController
         $this->sessionIdentifier = uniqid($user->id . '_');
         $this->positionName = $user->position->name;
         $this->checkFetched();
+
+        $this->interviewType = 0;
+    }
+
+    public function getCurrentType()
+    {
+        switch ($this->interviewType) {
+            case 0:
+                return 'hr';
+            case 1:
+                return 'tech';
+            default:
+                return 'hr';
+        }
+    }
+
+    public function getInterviewName()
+    {
+        return $this->getCurrentType() === 'hr' ? 'HR' : 'Technical';
     }
 
     public function checkFetched()
@@ -71,6 +93,29 @@ class Interview extends BaseController
         $this->dispatch('new-chat');
     }
 
+    public function addEvaluation($message, $name, $labels, $data)
+    {
+        $id = uniqid();
+        $this->chats[] = [
+            'name' => $name,
+            'message' => $message,
+            'type' => 'evaluated',
+            'labels' => $labels,
+            'data' => $data,
+            'id' => $id,
+        ];
+
+        $this->dispatch('new-chat');
+
+        $dispatchMessage = [
+            "labels" => $labels,
+            "data" => $data,
+            "id" => $id,
+        ];
+
+        $this->dispatch('render-evaluasi', $dispatchMessage);
+    }
+
     public function setCamera($id)
     {
         $this->cameraId = $id;
@@ -83,15 +128,23 @@ class Interview extends BaseController
 
     public function start()
     {
+        $type = $this->getCurrentType();
+
         $response = Http::withOptions(['verify' => false])->get("$this->api_url/config");
 
         $welcomeAudioUrl = $response->json()['tts_service'] === 'openai' ?
-            "$this->api_url/static/welcoming/welcoming-alloy.wav" :
-            "$this->api_url/static/welcoming/welcoming-zephlyn.wav";
+            "$this->api_url/static/welcoming/welcoming" . ($type === 'tech' ? "-tech" : "") . "-alloy.wav" :
+            "$this->api_url/static/welcoming/welcoming" . ($type === 'tech' ? "-tech" : "") . "-zephlyn.wav";
+
+        $message = ($type === 'tech') ?
+            "Terima kasih karena telah mempunyai ketertarikan pada perusahaan kami, Nama saya Mirai dari tim rekrutmen. Terima kasih sudah meluangkan waktu untuk mengikuti sesi wawancara ini. Kami sangat senang bisa mengenal Anda lebih dekat hari ini. Semoga kita bisa melalui sesi ini dengan lancar dan nyaman. Jika ada hal yang ingin ditanyakan selama wawancara, jangan ragu untuk mengatakannya. Mari kita mulai dengan perkenalan diri anda secara kreatif." :
+            "Selamat datang di wawancara fase teknikal. Nama saya Mirai. Terima kasih sudah meluangkan waktu untuk mengikuti sesi wawancara ini. Semoga kita bisa melalui sesi ini dengan lancar dan nyaman. Jika ada hal yang ingin ditanyakan selama wawancara, jangan ragu untuk mengatakannya. Mari kita mulai dengan perkenalan.";
 
         $dispatchMessage = [
             "audioUrl" => $welcomeAudioUrl,
-            "transcription" => "Terima kasih karena telah mempunyai ketertarikan pada perusahaan kami, Nama saya Mirai dari tim rekrutmen. Terima kasih sudah meluangkan waktu untuk mengikuti sesi wawancara ini. Kami sangat senang bisa mengenal Anda lebih dekat hari ini. Semoga kita bisa melalui sesi ini dengan lancar dan nyaman. Jika ada hal yang ingin ditanyakan selama wawancara, jangan ragu untuk mengatakannya. Mari kita mulai dengan perkenalan diri anda secara kreatif."
+            "transcription" => $message,
+            "isEvaluated" => false,
+            "name" => $this->getInterviewName(),
         ];
 
         $this->dispatch('play-audio', $dispatchMessage);
@@ -99,6 +152,8 @@ class Interview extends BaseController
 
     public function updatedAudioBlob()
     {
+        $type = $this->getCurrentType();
+
         $this->disabled = true;
         $this->loading = true;
 
@@ -107,6 +162,7 @@ class Interview extends BaseController
         $queries = [
             'user_id' => $this->sessionIdentifier,
             'position' => $this->positionName,
+            'interview_type' => $type,
         ];
 
         $stringifiedQueries = http_build_query($queries);
@@ -121,16 +177,32 @@ class Interview extends BaseController
 
         $response = $response->json();
 
-        $this->addChat($response['transcription'], auth()->user()->name, 'sent');
+        if (isset($response['transcription'])) {
+            $this->addChat($response['transcription'], auth()->user()->name, 'sent');
+            $this->dispatch('new-chat');
+        }
 
-        $this->dispatch('new-chat');
 
-        $dispatchMessage = [
-            "audioUrl" => $this->api_url . $response['audio_url'],
-            "transcription" => $response['ai_response']
-        ];
+        if (isset($response['ai_response'])) {
+            $isEvaluated = is_array($response['ai_response']) || is_object($response['ai_response']);
 
-        $this->dispatch('play-audio', $dispatchMessage);
+            $dispatchMessage = [
+                "audioUrl" => $this->api_url . $response['audio_url'],
+                "transcription" => ($isEvaluated) ? json_encode($response['ai_response']) : $response['ai_response'],
+                "isEvaluated" => $isEvaluated,
+                "name" => $this->getInterviewName(),
+            ];
+
+            $this->dispatch('play-audio', $dispatchMessage);
+
+            if ($isEvaluated) {
+                $this->interviewType++;
+
+                if ($this->interviewType < 1) {
+                    $this->start();
+                }
+            }
+        }
     }
 
     public function render()

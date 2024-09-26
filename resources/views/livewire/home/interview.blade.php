@@ -39,8 +39,10 @@
                 @foreach($chats as $chat)
                     @if($chat['type'] === 'received')
                         <x-chat.left name="{{ $chat['name'] }}" message="{{ $chat['message'] }}" />
-                    @else
+                    @elseif ($chat['type'] === 'sent')
                         <x-chat.right name="{{ $chat['name'] }}" message="{{ $chat['message'] }}" />
+                    @elseif ($chat['type'] === 'evaluated')
+                        <x-chat.evaluation name="{{ $chat['name'] }}" message="{{ $chat['message'] }}" :labels="$chat['labels']" :data="$chat['data']" :id="$chat['id']"/>
                     @endif
                     <br />
                 @endforeach
@@ -67,6 +69,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.2/drawing_utils.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/holistic@0.1/holistic.js" crossorigin="anonymous"></script>
+    @vite('resources/js/chart.js')
     <script>
         document.addEventListener('alpine:init', () => {      
             Alpine.data('interview', () => ({
@@ -332,6 +335,9 @@
             }))
         })
 
+        let audioPlaying = false;
+        let audioQueue = [];
+
         document.addEventListener('DOMContentLoaded', function () {
 
             function scrollChat()
@@ -346,19 +352,94 @@
             @this.on('play-audio', (params) => {
                 @this.set('disabled', true);
                 @this.set('loading', true);
-                const { audioUrl, transcription } = params[0];
+                const { audioUrl, transcription, isEvaluated, name } = params[0];
 
                 const audioElement = new Audio(audioUrl);
 
                 audioElement.onended = () => {
-                    @this.addChat(transcription, 'Interviewer', 'received');
+                    audioPlaying = false;
+
+                    if(isEvaluated)
+                    {
+                        jsonTranscription = JSON.parse(transcription);
+                        let labels = Object.keys(jsonTranscription['skor']);
+                        let data = Object.values(jsonTranscription['skor']);
+                        @this.addEvaluation(jsonTranscription['evaluasi_terperinci'], 'Evaluasi', labels, data);
+                    } else {
+                        @this.addChat(transcription, name, 'received');
+                    }
+
                     @this.set('disabled', false);
                     @this.set('loading', false);
                     @this.dispatch('new-chat');
+
+                    if(audioQueue.length > 0)
+                    {
+                        const audioElement = audioQueue.shift();
+                        audioPlaying = true;
+                        audioElement.play();
+                    }
                 };
 
+                if(audioPlaying)
+                {
+                    audioQueue.push(audioElement);
+                    return;
+                }
+
+                audioPlaying = true;
                 audioElement.play();
             })
+
+            @this.on('render-evaluasi', (params) => {
+                const { labels, data, id } = params[0];
+
+                // timeInterval until element with id is rendered/available
+                let waitChart = setInterval(() => {
+                    if(document.getElementById(id))
+                    {
+                        clearInterval(waitChart);
+                        
+                        let chartData = {
+                            labels: labels.map(label => label.split('_').join(' ').replace(/\b\w/g, l => l.toUpperCase())),
+                            datasets: [{
+                                label: 'Evaluasi',
+                                data: data,
+                                borderWidth: 1
+                            }]
+                        };
+
+                        let config = {
+                            type: 'radar',
+                            data: chartData,
+                            options: {
+                                scales: {
+                                    r: {
+                                        suggestedMin: 0,
+                                        suggestedMax: 10,
+                                        angleLines: {
+                                            color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'gray' : 'black'
+                                        },
+                                        grid: {
+                                            color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'gray' : 'black'
+                                        },
+                                        pointLabels: { // https://www.chartjs.org/docs/latest/axes/radial/#point-labels
+                                            color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'white' : 'black'
+                                        },
+                                        ticks: { // https://www.chartjs.org/docs/latest/axes/radial/#ticks
+                                            color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'white' : 'black',
+                                            backdropColor: 'transparent' // https://www.chartjs.org/docs/latest/axes/_common_ticks.html
+                                        }
+                                    }
+                                }
+                            }
+                        };
+
+                        const ctx = document.getElementById(id);
+                        new window.Chart(ctx, config);
+                    }
+                }, 100);
+            });
 
             window.addEventListener('new-chat', event => {
                 setTimeout(scrollChat, 50);
