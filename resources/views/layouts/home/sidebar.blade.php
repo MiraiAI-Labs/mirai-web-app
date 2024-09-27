@@ -19,6 +19,9 @@
                 <a href={{ route('quiz') }} class="{{ ($activeTab ?? null) == 'quiz' ? 'active' : '' }}"><i class="fa-solid fa-clipboard-question"></i>Quiz Exercise</a>
             </li>
             <li class="my-1">
+                <a href={{ route('courses') }} class="{{ ($activeTab ?? null) == 'courses' ? 'active' : '' }}"><i class="fa-solid fa-graduation-cap"></i>Course</a>
+            </li>
+            <li class="my-1">
                 <a href={{ route('jobs') }} class="{{ ($activeTab ?? null) == 'jobs' ? 'active' : '' }}"><i class="fa-solid fa-square-poll-vertical"></i>Job Vacancies</a>
             </li>
         @endif

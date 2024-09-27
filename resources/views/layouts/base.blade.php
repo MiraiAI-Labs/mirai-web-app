@@ -71,6 +71,20 @@
         }, false);
     </script>
     @endif
+    @if (app()->environment('local'))
+        <script>
+        document.addEventListener('livewire:init', () => {
+          Livewire.on('log', (event) => {
+            try{
+              console[event[0].level](event[0].obj);
+            }
+            catch{
+              console.log(event[0]);
+            }
+          });
+        });
+      </script>
+    @endif
 </body>
 
 </html>
