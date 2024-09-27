@@ -2,61 +2,73 @@
     {
         "name": "Frontend Developer",
         "slug": "frontend-developer",
-        "description": "Frontend Developer"
+        "description": "Frontend Developer",
+        "roadmap": "roadmaps/frontend.pdf"
     },
     {
         "name": "Backend Developer",
         "slug": "backend-developer",
-        "description": "Backend Developer"
+        "description": "Backend Developer",
+        "roadmap": "roadmaps/backend.pdf"
     },
     {
         "name": "Fullstack Developer",
         "slug": "fullstack-developer",
-        "description": "Fullstack Developer"
+        "description": "Fullstack Developer",
+        "roadmap": "roadmaps/full-stack.pdf"
     },
     {
         "name": "DevOps Engineer",
         "slug": "devops-engineer",
-        "description": "DevOps Engineer"
+        "description": "DevOps Engineer",
+        "roadmap": "roadmaps/devops.pdf"
     },
     {
         "name": "SecOps Engineer",
         "slug": "secops-engineer",
-        "description": "SecOps Engineer"
+        "description": "SecOps Engineer",
+        "roadmap": "roadmaps/secops.jpg"
     },
     {
         "name": "QA Engineer",
         "slug": "qa-engineer",
-        "description": "QA Engineer"
+        "description": "QA Engineer",
+        "roadmap": "roadmaps/qa.pdf"
     },
     {
         "name": "Project Manager",
         "slug": "project-manager",
-        "description": "Project Manager"
+        "description": "Project Manager",
+        "roadmap": "roadmaps/project-manager.jpg"
     },
     {
         "name": "Product Manager",
         "slug": "product-manager",
-        "description": "Product Manager"
+        "description": "Product Manager",
+        "roadmap": "roadmaps/product-manager.jpg"
     },
     {
         "name": "UI/UX Designer",
         "slug": "ui-ux-designer",
-        "description": "UI/UX Designer"
+        "description": "UI/UX Designer",
+        "roadmap": "roadmaps/ux-design.pdf"
     },
     {
         "name": "Data Scientist",
         "slug": "data-scientist",
-        "description": "Data Scientist"
+        "description": "Data Scientist",
+        "roadmap": "roadmaps/ai-data-scientist.pdf"
     },
     {
         "name": "Data Engineer",
         "slug": "data-engineer",
-        "description": "Data Engineer"
+        "description": "Data Engineer",
+        "roadmap": "roadmaps/data-engineer.jpg"
     },
     {
         "name": "Data Analyst",
         "slug": "data-analyst",
-        "description": "Data Analyst"
+        "description": "Data Analyst",
+        "roadmap": "roadmaps/data-analyst.pdf"
     }
 ]

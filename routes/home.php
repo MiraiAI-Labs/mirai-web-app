@@ -8,6 +8,7 @@ use App\Livewire\User\Password;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Home\Quiz;
 use App\Http\Middleware\PositionChosen;
+use App\Livewire\Home\Roadmap;
 use App\Livewire\Home\Welcome;
 
 Route::get('/', Welcome::class)->name('welcome');
@@ -28,6 +29,9 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/quiz', Quiz::class)
             ->name('quiz');
+
+        Route::get('/roadmap', Roadmap::class)
+            ->name('roadmap');
     });
 
     Route::prefix('user')->group(function () {
