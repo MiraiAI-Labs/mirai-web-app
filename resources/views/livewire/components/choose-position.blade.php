@@ -1,4 +1,4 @@
-<div class="{{ $landingPage ? 'w-8/12' : 'w-full md:w-4/5' }}" x-data="{
+<div class="{{ $landingPage ? 'w-8/12' : 'w-full md:w-4/5' }} {{ $class ?? '' }}" x-data="{
             selected: @entangle('selectedPosition'),
             text: @entangle('textPosition'),
             choose(target) {

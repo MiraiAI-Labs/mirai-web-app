@@ -13,6 +13,7 @@ class Line extends BaseController
     public $data;
     public $id;
     public $multiple = false;
+    public $class;
 
     public function mount()
     {

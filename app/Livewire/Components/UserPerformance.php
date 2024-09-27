@@ -4,24 +4,21 @@ namespace App\Livewire\Components;
 
 use App\Livewire\BaseController;
 use App\Traits\ToastDispatchable;
-use Illuminate\Support\Str;
 
-class Wordcloud extends BaseController
+class UserPerformance extends BaseController
 {
     use ToastDispatchable;
 
-    public $data;
-    public $id;
     public $class;
+    public $id;
 
     public function mount()
     {
-        if ($this->id == null)
-            $this->id = (string) Str::uuid();
+        $this->id = str()->random();
     }
 
     public function render()
     {
-        return view('livewire.components.wordcloud');
+        return view('livewire.components.user-performance');
     }
 }

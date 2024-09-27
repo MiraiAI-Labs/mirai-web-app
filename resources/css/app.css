@@ -450,3 +450,19 @@ video.flipped {
 .mirai-gradient {
     background: linear-gradient(to right, #FF83F3 0%, #0094FF 100%);
 }
+
+.bw-gradient.dark {
+    background: linear-gradient(90deg, #FFFFFF 0%, #999999 100%);
+}
+
+.bw-gradient.light {
+    background: linear-gradient(90deg, #000000 0%, #999999 100%);
+}
+
+.class-gradient.dark {
+    background: linear-gradient(90deg, #0084FF 0%, #FFFFFF 100%);
+}
+
+.class-gradient.light {
+    background: linear-gradient(90deg, #0084FF 0%, #000000 100%);
+}

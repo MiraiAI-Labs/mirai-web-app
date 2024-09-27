@@ -15,6 +15,7 @@ class Bar extends BaseController
     public $isVertical = true;
     public $sort = true;
     public $descending = true;
+    public $class;
 
     public function mount()
     {

@@ -1,4 +1,4 @@
-<canvas class="w-full h-full" id="{{ $this->id }}"></canvas>
+<canvas class="w-full h-full {{ $class ?? '' }}" id="{{ $this->id }}"></canvas>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

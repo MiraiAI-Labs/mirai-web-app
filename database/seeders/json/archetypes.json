@@ -1,0 +1,77 @@
+[
+    {
+        "name": "The Architect",
+        "description": "",
+        "image": "images/archetypes/The Architect.png"
+    },
+    {
+        "name": "The Ruler",
+        "description": "",
+        "image": "images/archetypes/The Ruler.png"
+    },
+    {
+        "name": "The Innovator",
+        "description": "",
+        "image": "images/archetypes/The Innovator.png"
+    },
+    {
+        "name": "The Philosopher",
+        "description": "",
+        "image": "images/archetypes/The Philosopher.png"
+    },
+    {
+        "name": "The Shadowbroker",
+        "description": "",
+        "image": "images/archetypes/The Shadowbroker.png"
+    },
+    {
+        "name": "The Artist",
+        "description": "",
+        "image": "images/archetypes/The Artist.png"
+    },
+    {
+        "name": "The Conductor",
+        "description": "",
+        "image": "images/archetypes/The Conductor.png"
+    },
+    {
+        "name": "The Master",
+        "description": "",
+        "image": "images/archetypes/The Master.png"
+    },
+    {
+        "name": "The King",
+        "description": "",
+        "image": "images/archetypes/The King.png"
+    },
+    {
+        "name": "The Visionary",
+        "description": "",
+        "image": "images/archetypes/The Visionary.png"
+    },
+    {
+        "name": "The Arch-Wizard",
+        "description": "",
+        "image": "images/archetypes/The Arch-Wizard.png"
+    },
+    {
+        "name": "The Shadow Monarch",
+        "description": "",
+        "image": "images/archetypes/The Shadow Monarch.png"
+    },
+    {
+        "name": "The Renaissance Artisans",
+        "description": "",
+        "image": "images/archetypes/The Renaissance Artisans.png"
+    },
+    {
+        "name": "The Maestro",
+        "description": "",
+        "image": "images/archetypes/The Maestro.png"
+    },
+    {
+        "name": "The Travelling Wanderer",
+        "description": "",
+        "image": "images/archetypes/The Travelling Wanderer.png"
+    }
+]

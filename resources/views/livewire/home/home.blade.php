@@ -12,11 +12,12 @@
             </div>
         </section>
     @else
-        <section class="w-full flex justify-center mb-4">
-            <livewire:components.choose-position :showResetPosition="true" />
+        <h2 class="col-span-1 md:col-span-2 text-4xl font-bold !bg-clip-text text-transparent bw-gradient" :class="window.theme == 'dark' ? 'dark' : 'light'">Selamat datang, Ranger {{ auth()->user()->first_name }}.</h2>
+        <h2 class="col-span-1 md:col-span-2 text-xl font-light">Kami telah menunggumu. Mari kita mulai perjalanannya!</h2>
+        
+        <section class="w-full flex justify-center my-4">
+            <livewire:components.choose-position :showResetPosition="true" class="!w-full"/>
         </section>
-
-        <h2 class="col-span-1 md:col-span-2 text-2xl font-bold">Dashboard</h2>
 
         <section class="mt-4" x-data="job_analysis" wire:poll="pollFetched">
             <div class="bg-base-100 rounded-xl flex justify-center items-center min-h-80 p-12 flex-col items-center" x-show="!fetched">
@@ -26,89 +27,93 @@
 
             @if($this->analysis_json)
             
-            <div x-show="fetched" class="grid grid-cols-1 gap-6">
+            <div x-show="fetched" class="grid grid-cols-8 grid-rows-1 gap-3">
 
-                <div id="indicators-carousel" class="relative w-full" data-carousel="static" wire:ignore>
+                <livewire:components.UserClass class="row-span-1 col-span-3"/>
+                
+                <livewire:components.UserPerformance class="row-span-1 col-span-2"/>
+                
+                <div id="indicators-carousel" class="relative w-full row-span-1 col-span-3" data-carousel="static" wire:ignore>
                     <!-- Carousel wrapper -->
-                    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                    <div class="relative overflow-hidden rounded-lg h-full">
 
                         <div class="w-full duration-700 ease-in-out" data-carousel-item="active">
-                            <div x-show="fetched" class="w-full shadow bg-base-100 rounded-xl flex justify-center items-center w-full h-[50svh] p-8 flex-col items-center">
+                            <div x-show="fetched" class="w-full shadow bg-base-100 rounded-xl flex justify-center items-center w-full h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Job Wordcloud</h2>
                                 <div class="w-full h-full flex justify-center">
-                                    <livewire:components.wordcloud :data="$analysis_json['wordcloud_data']" wire:key="wordcloud_data" />
+                                    <livewire:components.wordcloud class="my-auto" :data="$analysis_json['wordcloud_data']" wire:key="wordcloud_data" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
-                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-[50svh] p-8 flex-col items-center">
+                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Top Locations</h2>
                                 <div class="w-full h-full flex justify-center">
-                                    <livewire:components.bar :data="$analysis_json['top10_job_locs']" wire:key="top10_job_locs" />
+                                    <livewire:components.bar class="my-auto" :data="$analysis_json['top10_job_locs']" wire:key="top10_job_locs" />
                                 </div>
                             </div>    
                         </div>
 
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
-                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-[50svh] p-8 flex-col items-center">
+                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Most Similar Job Titles</h2>
                                 <div class="w-full h-full flex justify-center">
-                                    <livewire:components.bar :data="$analysis_json['top_job_titles']" wire:key="top_job_titles" :isVertical="false"/>
+                                    <livewire:components.bar class="my-auto" :data="$analysis_json['top_job_titles']" wire:key="top_job_titles" :isVertical="false"/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
-                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-[50svh] p-8 flex-col items-center">
+                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Industries With Most Jobs</h2>
                                 <div class="w-full h-full flex justify-center">
-                                    <livewire:components.bar :data="$analysis_json['top10_industries_with_most_jobs']" wire:key="top10_industries_with_most_jobs" :isVertical="false"/>
+                                    <livewire:components.bar class="my-auto" :data="$analysis_json['top10_industries_with_most_jobs']" wire:key="top10_industries_with_most_jobs" :isVertical="false"/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
-                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-[50svh] p-8 flex-col items-center">
+                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Most Mentioned Tech Stacks in Job Descriptions</h2>
                                 <div class="w-full h-full flex justify-center">
-                                    <livewire:components.bar :data="array_slice($analysis_json['most_mentioned_skills_and_techstacks'], 0, 10)" wire:key="most_mentioned_skills_and_techstacks" :isVertical="false"/>
+                                    <livewire:components.bar class="my-auto" :data="array_slice($analysis_json['most_mentioned_skills_and_techstacks'], 0, 10)" wire:key="most_mentioned_skills_and_techstacks" :isVertical="false"/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
-                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-[50svh] p-8 flex-col items-center">
+                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Most Remote Job Titles</h2>
                                 <div class="w-full h-full flex justify-center">
-                                    <livewire:components.bar :data="$analysis_json['top10_remote_jobs']" wire:key="top10_remote_jobs" :isVertical="false"/>
+                                    <livewire:components.bar class="my-auto" :data="$analysis_json['top10_remote_jobs']" wire:key="top10_remote_jobs" :isVertical="false"/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
-                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-[50svh] p-8 flex-col items-center">
+                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Most Non-Remote Job Titles</h2>
                                 <div class="w-full h-full flex justify-center">
-                                    <livewire:components.bar :data="$analysis_json['top10_non_remote_jobs']" wire:key="top10_non_remote_jobs" :isVertical="false"/>
+                                    <livewire:components.bar class="my-auto" :data="$analysis_json['top10_non_remote_jobs']" wire:key="top10_non_remote_jobs" :isVertical="false"/>
                                 </div>
                             </div>
                         </div>
 
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
-                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-[50svh] p-8 flex-col items-center">
+                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Job Posting Trends Over Time</h2>
                                 <div class="w-full h-full flex justify-center">
-                                    <livewire:components.line :data="$analysis_json['job_post_trend']" wire:key="job_post_trend" />
+                                    <livewire:components.line class="my-auto" :data="$analysis_json['job_post_trend']" wire:key="job_post_trend" />
                                 </div>
                             </div>
                         </div>
                         
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
-                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-[50svh] p-8 flex-col items-center">
+                            <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Tech Trends Over Time</h2>
                                 <div class="w-full h-full flex justify-center">
-                                    <livewire:components.line :data="$analysis_json['tech_stacks_overtime']" wire:key="tech_stacks_overtime" :multiple="true"/>
+                                    <livewire:components.line class="my-auto" :data="$analysis_json['tech_stacks_overtime']" wire:key="tech_stacks_overtime" :multiple="true"/>
                                 </div>
                             </div>
                         </div>

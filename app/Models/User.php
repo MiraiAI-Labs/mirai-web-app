@@ -72,6 +72,19 @@ class User extends Authenticatable
         return $this->belongsTo(Position::class);
     }
 
+    public function userStatistic()
+    {
+        if (!UserStatistic::where('user_id', $this->id)->exists()) {
+            $archetype = Archetype::where('name', 'The Travelling Wanderer')->first();
+            $userStatistic = new UserStatistic();
+            $userStatistic->user_id = $this->id;
+            $userStatistic->archetype_id = $archetype->id;
+            $userStatistic->save();
+        }
+
+        return $this->hasOne(UserStatistic::class);
+    }
+
     public static function createIfNotExists(array $attributes): ?User
     {
         if (!array_key_exists('email', $attributes)) {
