@@ -10,6 +10,8 @@
         
         let datasets = [{
             label: 'Jumlah',
+            backgroundColor: 'rgb(255, 229, 0, 0.7)',
+            borderColor: 'rgb(255, 229, 0)',
             data: values,
         }];
         
@@ -53,7 +55,12 @@
             },
         };
 
+        const options = {
+            responsive: true,
+            maintainAspectRatio: false,
+        };
+
         const ctx = document.getElementById("{{ $this->id }}");
-        new window.Chart(ctx, config);
+        new window.Chart(ctx, config, options);
     });
 </script>

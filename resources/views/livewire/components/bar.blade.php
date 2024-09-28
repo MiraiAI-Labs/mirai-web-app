@@ -22,6 +22,7 @@
             labels: Object.keys(bar_data),
             datasets: [{
                 label: 'Jumlah',
+                backgroundColor: 'rgb(255, 229, 0, 0.7)',
                 data: Object.values(bar_data),
             }]
         };
@@ -39,7 +40,12 @@
             },
         };
 
+        const options = {
+            responsive: true,
+            maintainAspectRatio: false,
+        };
+
         const ctx = document.getElementById("{{ $this->id }}");
-        new window.Chart(ctx, config);
+        new window.Chart(ctx, config, options);
     });
 </script>

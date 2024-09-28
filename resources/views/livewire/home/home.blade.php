@@ -12,7 +12,7 @@
             </div>
         </section>
     @else
-        <h2 class="col-span-1 md:col-span-2 text-4xl font-bold !bg-clip-text text-transparent bw-gradient" :class="window.theme == 'dark' ? 'dark' : 'light'">Selamat datang, Ranger {{ auth()->user()->first_name }}.</h2>
+        <h2 class="col-span-1 md:col-span-2 text-4xl font-bold !bg-clip-text text-transparent bw-gradient" :class="theme == 'dark' ? 'dark' : 'light'">Selamat datang, Ranger {{ auth()->user()->first_name }}.</h2>
         <h2 class="col-span-1 md:col-span-2 text-xl font-light">Kami telah menunggumu. Mari kita mulai perjalanannya!</h2>
         
         <section class="w-full flex justify-center my-4">
@@ -40,7 +40,7 @@
                         <div class="w-full duration-700 ease-in-out" data-carousel-item="active">
                             <div x-show="fetched" class="w-full shadow bg-base-100 rounded-xl flex justify-center items-center w-full h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Job Wordcloud</h2>
-                                <div class="w-full h-full flex justify-center">
+                                <div class="w-full h-full flex justify-center relative">
                                     <livewire:components.wordcloud class="my-auto" :data="$analysis_json['wordcloud_data']" wire:key="wordcloud_data" />
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
                             <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Top Locations</h2>
-                                <div class="w-full h-full flex justify-center">
+                                <div class="w-full h-full flex justify-center relative">
                                     <livewire:components.bar class="my-auto" :data="$analysis_json['top10_job_locs']" wire:key="top10_job_locs" />
                                 </div>
                             </div>    
@@ -58,7 +58,7 @@
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
                             <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Most Similar Job Titles</h2>
-                                <div class="w-full h-full flex justify-center">
+                                <div class="w-full h-full flex justify-center relative">
                                     <livewire:components.bar class="my-auto" :data="$analysis_json['top_job_titles']" wire:key="top_job_titles" :isVertical="false"/>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
                             <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Industries With Most Jobs</h2>
-                                <div class="w-full h-full flex justify-center">
+                                <div class="w-full h-full flex justify-center relative">
                                     <livewire:components.bar class="my-auto" :data="$analysis_json['top10_industries_with_most_jobs']" wire:key="top10_industries_with_most_jobs" :isVertical="false"/>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
                             <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Most Mentioned Tech Stacks in Job Descriptions</h2>
-                                <div class="w-full h-full flex justify-center">
+                                <div class="w-full h-full flex justify-center relative">
                                     <livewire:components.bar class="my-auto" :data="array_slice($analysis_json['most_mentioned_skills_and_techstacks'], 0, 10)" wire:key="most_mentioned_skills_and_techstacks" :isVertical="false"/>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
                             <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Most Remote Job Titles</h2>
-                                <div class="w-full h-full flex justify-center">
+                                <div class="w-full h-full flex justify-center relative">
                                     <livewire:components.bar class="my-auto" :data="$analysis_json['top10_remote_jobs']" wire:key="top10_remote_jobs" :isVertical="false"/>
                                 </div>
                             </div>
@@ -94,7 +94,7 @@
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
                             <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Most Non-Remote Job Titles</h2>
-                                <div class="w-full h-full flex justify-center">
+                                <div class="w-full h-full flex justify-center relative">
                                     <livewire:components.bar class="my-auto" :data="$analysis_json['top10_non_remote_jobs']" wire:key="top10_non_remote_jobs" :isVertical="false"/>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
                             <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Job Posting Trends Over Time</h2>
-                                <div class="w-full h-full flex justify-center">
+                                <div class="w-full h-full flex justify-center relative">
                                     <livewire:components.line class="my-auto" :data="$analysis_json['job_post_trend']" wire:key="job_post_trend" />
                                 </div>
                             </div>
@@ -112,7 +112,7 @@
                         <div class="hidden w-full duration-700 ease-in-out" data-carousel-item>
                             <div x-show="fetched" class="absolute w-full shadow bg-base-100 rounded-xl flex justify-center items-center h-full p-8 flex-col items-center">
                                 <h2 class="text-xl font-bold mb-4">Tech Trends Over Time</h2>
-                                <div class="w-full h-full flex justify-center">
+                                <div class="w-full h-full flex justify-center relative">
                                     <livewire:components.line class="my-auto" :data="$analysis_json['tech_stacks_overtime']" wire:key="tech_stacks_overtime" :multiple="true"/>
                                 </div>
                             </div>

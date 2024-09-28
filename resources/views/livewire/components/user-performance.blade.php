@@ -19,9 +19,15 @@
                     label: 'Performa Anda',
                     data: @json(auth()->user()->userStatistic->performance),
                     fill: true,
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    pointBackgroundColor: 'rgb(255, 99, 132)',
+                    backgroundColor: 'rgb(255, 229, 0, 0.7)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgb(255, 99, 132)'
+                }, {
+                    label: 'Performa {{ auth()->user()->position->name }}',
+                    data: [5, 6, 7, 8, 9, 10, 8, 7],
+                    fill: true,
+                    backgroundColor: 'rgba(255, 144, 0, 0.7)',
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgb(255, 99, 132)'
@@ -52,7 +58,11 @@
                             },
                             ticks: { // https://www.chartjs.org/docs/latest/axes/radial/#ticks
                                 color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'white' : 'black',
-                                backdropColor: 'transparent' // https://www.chartjs.org/docs/latest/axes/_common_ticks.html
+                                backdropColor: 'transparent', // https://www.chartjs.org/docs/latest/axes/_common_ticks.html
+                                // only show the first and last ticks
+                                callback: function(value, index, values) {
+                                    return index === 0 || index === values.length - 1 ? value : '';
+                                }
                             }
                         }
                     }

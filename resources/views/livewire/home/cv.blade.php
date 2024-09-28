@@ -23,7 +23,7 @@
         </div>
         <div class="shadow bg-base-100 rounded-xl min-h-80 w-full sm:w-3/4 max-h-svh flex flex-col">
             <header class="p-4 text-xl font-semibold text-center">Analysis Result</header>
-            <main class="px-4 pb-4 text-justify overflow-y-scroll flex min-h-[300px] flex-col" wire:poll="pollingReviewResult">
+            <main class="px-4 pb-4 text-justify overflow-y-scroll flex min-h-[300px] flex-col" wire:poll="pollingReviewResult" :class="theme == 'light' ? 'text-black' : 'text-white'">
                 {{ Illuminate\Mail\Markdown::parse($review ?? '') }}
                 <span class="loading loading-spinner w-16 {{ $loading ? 'block' : 'hidden' }} m-auto"></span>
             </main>
