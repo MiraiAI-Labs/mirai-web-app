@@ -101,6 +101,22 @@
     }
 }
 
+.text-theme {
+    @apply text-black;
+}
+
+.text-theme.light {
+    @apply text-black;
+}
+
+.text-theme.dark {
+    @apply text-white;
+}
+
+.btn-orange-gradient {
+    background: linear-gradient(90deg, rgba(255, 229, 0, 1) 0%, rgba(255, 144, 0, 1) 100%);
+}
+
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.

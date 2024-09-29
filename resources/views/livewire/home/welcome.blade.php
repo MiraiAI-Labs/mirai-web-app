@@ -35,15 +35,15 @@
         </div>
     </nav>
 
-    <section class="pt-16 px-8 h-[600px] flex flex-col justify-center items-center hero-mirai" :class="document.getElementsByTagName('html')[0].dataset.theme == 'dark' ? 'dark' : 'light'">
-        <h1 class="text-5xl font-bold text-center text-transparent !bg-clip-text p-1" :class="document.getElementsByTagName('html')[0].dataset.theme == 'dark' ? 'dark' : 'light'"">Bukan cuma diterima,</h1>
-        <h1 class="text-5xl font-bold text-center text-transparent !bg-clip-text p-1" :class="document.getElementsByTagName('html')[0].dataset.theme == 'dark' ? 'dark' : 'light'"">tapi jadi pilihan utama.</h1>
+    <section class="pt-16 px-8 h-[600px] flex flex-col justify-center items-center hero-mirai" :class="theme == 'dark' ? 'dark' : 'light'">
+        <h1 class="text-5xl font-bold text-center text-transparent !bg-clip-text p-1" :class="theme == 'dark' ? 'dark' : 'light'"">Bukan cuma diterima,</h1>
+        <h1 class="text-5xl font-bold text-center text-transparent !bg-clip-text p-1" :class="theme == 'dark' ? 'dark' : 'light'"">tapi jadi pilihan utama.</h1>
         <h2 class="text-lg text-center mt-8 poppins-light">Mirai hadir membantu Anda mempersiapkan keterampilan dan memberikan informasi</h2>
         <h2 class="text-lg text-center mb-8 poppins-light">untuk mewujudkan karier IT impian Anda.</h2>
         <livewire:components.choose-position :landingPage="true" />
     </section>
 
-    <section id="fitur" class="px-8 md:px-32 py-20 fitur-bg" :class="document.getElementsByTagName('html')[0].dataset.theme == 'dark' ? 'dark' : 'light'">
+    <section id="fitur" class="px-8 md:px-32 py-20 fitur-bg" :class="theme == 'dark' ? 'dark' : 'light'">
         <h1 class="text-transparent !bg-clip-text mirai-gradient text-5xl font-bold">Fitur Mirai</h1>
         <h2 class="my-4">Mirai didukung dengan berbagai fitur yang dapat membantu Anda mempersiapkan strategi untuk mendapatkan karir IT impian Anda. Fitur-fitur ini meliputi analisis tren lapangan pekerjaan, reviewer CV, simulasi interview, dan juga fitur pencarian pekerjaan. Mari pastikan agar kemampuan yang Anda miliki sekarang sesuai dengan tren dan kebutuhan dari industri IT di lapangan, dan jadilah kandidat pemenangnya!</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -70,8 +70,8 @@
         </div>
     </section>
 
-    <section id="tentang" class="px-8 md:px-32 py-20 hero-mirai" :class="document.getElementsByTagName('html')[0].dataset.theme == 'dark' ? 'dark' : 'light'">
-        <h1 class="text-5xl font-bold text-transparent !bg-clip-text p-1" :class="document.getElementsByTagName('html')[0].dataset.theme == 'dark' ? 'dark' : 'light'">Tentang Mirai</h1>
+    <section id="tentang" class="px-8 md:px-32 py-20 hero-mirai" :class="theme == 'dark' ? 'dark' : 'light'">
+        <h1 class="text-5xl font-bold text-transparent !bg-clip-text p-1" :class="theme == 'dark' ? 'dark' : 'light'">Tentang Mirai</h1>
         <h2 class="mt-6">Di era digital yang terus berkembang pesat, kebutuhan akan tenaga kerja di bidang teknologi informasi (IT) semakin meningkat. Kompetensi dan keterampilan yang relevan menjadi kunci sukses untuk bersaing dalam industri ini. Namun, tantangan yang dihadapi oleh calon profesional IT semakin kompleks, mulai dari mengidentifikasi keterampilan yang dibutuhkan hingga mempersiapkan diri menghadapi proses rekrutmen yang semakin selektif.</h2>
         <h2 class="mt-6">Menanggapi perkembangan ini, Mirai hadir sebagai solusi inovatif untuk mendukung tenaga kerja IT dalam mempersiapkan diri menghadapi dunia kerja. Sebagai pionir di bidang ini, Mirai menawarkan platform yang dirancang khusus untuk membantu pengguna mengembangkan kompetensi yang dibutuhkan, mengumpulkan informasi penting, dan mengoptimalkan persiapan melamar pekerjaan.</h2>
         <h2 class="mt-6">Didukung oleh sistem berbasis kecerdasan buatan, Mirai menyediakan berbagai fitur yang meningkatkan pengalaman pengguna, termasuk analisis data otomatis untuk membantu memahami tren industri, CV reviewer yang ekstensif dan cerdas untuk menyempurnakan dokumen lamaran, serta simulasi wawancara kerja nyata untuk mempersiapkan diri menghadapi proses seleksi yang sebenarnya. Dengan Mirai, calon profesional IT dapat menyusun strategi karir yang lebih matang dan percaya diri dalam mengejar karier impian mereka.</h2>
