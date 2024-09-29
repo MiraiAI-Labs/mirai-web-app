@@ -10,9 +10,9 @@
             <img src="{{ asset('images/hero-archetype.png') }}" alt="Hero Archetype">
         </div>
     </section>
-    <section class="flex md:flex-row flex-col mt-2 mb-16">
+    <section class="flex md:flex-row flex-col mt-2 mb-6 md:mb-16">
         <div class="md:w-1/2 pr-0 md:pr-6 flex">
-            <h1 class="my-auto text-3xl md:text-4xl lg:text-6xl xl:text-8xl font-bold text-left !bg-clip-text text-transparent bw-gradient" :class="theme == 'dark' ? 'dark' : 'light'">Persona menjadi kunci kesuksesan karir.</h1>
+            <h1 class="my-auto text-3xl md:text-4xl lg:text-6xl font-bold text-left !bg-clip-text text-transparent bw-gradient" :class="theme == 'dark' ? 'dark' : 'light'">Persona menjadi kunci kesuksesan karir.</h1>
         </div>
         <div class="md:w-1/2 pr-0 md:pl-6 mt-4 md:mt-0">
             <p class="text-sm lg:text-xl text-theme" :class="theme == 'dark' ? 'dark' : 'light'">Pada kenyataannya, terdapat banyak sekali ragam dan karakteristik dalam pekerjaan di industri IT. Mulai dari pekerjaan yang melibatkan analisis hingga kreativitas out-of-the-box.</p>
@@ -20,14 +20,14 @@
             <p class="text-sm lg:text-xl text-theme" :class="theme == 'dark' ? 'dark' : 'light'">Berdasarkan studi yang dilakukan oleh Heslin, dkk. (2018), bukti empiris penelitian telah membuktikan bahwa persona dan sifat sangat mempengaruhi keberhasilan seseorang dalam karir mereka.</p>
         </div>
     </section>
-    <section>
-        <div>
-            <p class="text-sm lg:text-xl text-theme" :class="theme == 'dark' ? 'dark' : 'light'">Setiap orang memiliki karakteristik dan kepribadiannya masing-masing. Hal ini dapat mempengaruhi bagaimana pilihan bidang IT mereka nanti. Hingga saat ini, belum ada acuan pasti yang mengklasifikasikan bidang yang tepat berdasarkan kepribadian seseorang.</p>
+    <section class="flex md:flex-row flex-col">
+        <div class="md:w-1/2 md:flex md:justify-evenly md:flex-col md:pr-16 mb-4 md:mb-0">
+            <p class="text-sm lg:text-lg text-theme" :class="theme == 'dark' ? 'dark' : 'light'">Setiap orang memiliki karakteristik dan kepribadiannya masing-masing. Hal ini dapat mempengaruhi bagaimana pilihan bidang IT mereka nanti. Hingga saat ini, belum ada acuan pasti yang mengklasifikasikan bidang yang tepat berdasarkan kepribadian seseorang.</p>
             <br />
-            <p class="text-sm lg:text-xl text-theme" :class="theme == 'dark' ? 'dark' : 'light'">Menanggapi hal ini, Mirai mengusulkan sistem dikotomi 7 Arketipe IT (The Seven IT Archetypes). Sistem dikotomi ini mengklasifikasikan minat dan bakat seseorang berdasarkan uji kepribadian dan tingkah laku seseorang dalam bidang ini.</p>
+            <p class="text-sm lg:text-lg text-theme" :class="theme == 'dark' ? 'dark' : 'light'">Menanggapi hal ini, Mirai mengusulkan sistem dikotomi 7 Arketipe IT (The Seven IT Archetypes). Sistem dikotomi ini mengklasifikasikan minat dan bakat seseorang berdasarkan uji kepribadian dan tingkah laku seseorang dalam bidang ini.</p>
         </div>
-        <div>
-            <img src="{{ asset('images/diagram-archetype.png') }}" alt="Diagram Archetype">
+        <div class="md:w-1/2 mt-4 md:mt-0 flex">
+            <img src="{{ asset('images/diagram-archetype.png') }}" alt="Diagram Archetype" class="m-auto">
         </div>
     </section>
 </div>
