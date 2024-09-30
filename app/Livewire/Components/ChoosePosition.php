@@ -22,6 +22,7 @@ class ChoosePosition extends BaseController
 
     public bool $showRecommendations = false;
     public bool $showResetPosition = false;
+    public bool $home = false;
     public string $class = '';
 
     public $currentRouteName;

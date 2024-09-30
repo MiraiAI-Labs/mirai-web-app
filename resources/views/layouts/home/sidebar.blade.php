@@ -16,7 +16,7 @@
                 <a href={{ route('roadmap') }} class="{{ ($activeTab ?? null) == 'roadmap' ? 'active' : '' }}"><i class="fa-solid fa-map"></i>Roadmap</a>
             </li>
             <li class="my-1">
-                <a href={{ route('quiz') }} class="{{ ($activeTab ?? null) == 'quiz' ? 'active' : '' }}"><i class="fa-solid fa-clipboard-question"></i>Quiz Exercise</a>
+                <a href={{ route('quiz') }} class="{{ ($activeTab ?? null) == 'quiz' ? 'active' : '' }}"><i class="fa-solid fa-dumbbell"></i>Training Arena</a>
             </li>
             <li class="my-1">
                 <a href={{ route('courses') }} class="{{ ($activeTab ?? null) == 'courses' ? 'active' : '' }}"><i class="fa-solid fa-graduation-cap"></i>Course</a>

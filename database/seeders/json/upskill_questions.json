@@ -1,0 +1,127 @@
+[
+    {
+      "skill_parameter": "Interpersonal",
+      "question": "Anda adalah seorang manajer di perusahaan yang sedang mengalami perselisihan antara dua rekan kerja di tim Anda terkait pembagian tugas. Keduanya merasa sudah melakukan lebih banyak pekerjaan. Bagaimana Anda mengatasi masalah ini agar perselisihan bisa diselesaikan dengan baik tanpa merusak hubungan kerja?",
+      "answer": "Panggil keduanya secara terpisah untuk mendengarkan pandangan mereka. Setelah itu, adakan pertemuan bersama dengan fokus pada mencari solusi yang adil, tidak menghakimi, dan mempertimbangkan cara kolaborasi yang lebih baik di masa depan."
+    },
+    {
+      "skill_parameter": "Interpersonal",
+      "question": "Rekan kerja Anda cenderung diam dan kurang berkomunikasi setelah mendapat kritik dari atasan. Tugas tim terhambat karena ini. Bagaimana Anda akan mendekati dan membantu rekan tersebut agar produktivitas tim tetap terjaga?",
+      "answer": "Dekati dia secara pribadi dan tanyakan apakah dia ingin berbicara. Gunakan empati untuk memahami perasaannya dan ajak dia mendiskusikan cara-cara agar bisa lebih produktif tanpa merasa terbebani kritik."
+    },
+    {
+      "skill_parameter": "Interpersonal",
+      "question": "Anda ditugaskan untuk memimpin sebuah tim yang terdiri dari orang-orang dengan latar belakang budaya yang sangat berbeda. Terdapat kesalahpahaman yang kerap terjadi terkait komunikasi. Apa yang Anda lakukan untuk memastikan harmoni dan kerja sama tim terjaga?",
+      "answer": "Selenggarakan pertemuan tim untuk mengenalkan budaya masing-masing anggota dan bagaimana mereka terbiasa berkomunikasi. Dorong lingkungan yang inklusif dan saling menghormati, serta tetapkan pedoman komunikasi yang jelas dan terbuka."
+    },
+    {
+      "skill_parameter": "Interpersonal",
+      "question": "Seorang anggota tim Anda selalu mendominasi pembicaraan dalam rapat dan membuat anggota lain tidak nyaman. Bagaimana Anda akan menangani hal ini tanpa membuat situasi menjadi lebih tegang?",
+      "answer": "Berikan ruang untuk semua orang berbicara dengan membatasi waktu berbicara setiap orang. Dekati anggota yang mendominasi secara pribadi dan jelaskan pentingnya mendengarkan perspektif lain agar tim lebih efektif."
+    },
+    {
+      "skill_parameter": "Interpersonal",
+      "question": "Tim Anda merasa terlalu banyak bekerja dan mengalami kelelahan, namun tenggat waktu proyek sudah mendekat. Bagaimana Anda bisa mengatasi masalah ini untuk menjaga semangat tim tanpa mengorbankan hasil proyek?",
+      "answer": "Berikan penghargaan kecil untuk upaya mereka dan tawarkan dukungan, seperti berbagi beban kerja atau mencari bantuan eksternal. Ajukan waktu istirahat singkat dan komunikasikan tenggat waktu yang realistis kepada manajemen."
+    },
+    {
+      "skill_parameter": "EQ",
+      "question": "Anda menerima kritik keras di depan rekan-rekan Anda. Bagaimana Anda akan merespon situasi ini dengan kecerdasan emosional yang baik?",
+      "answer": "Tarik napas dalam-dalam, tahan respons emosional spontan, dan dengarkan baik-baik. Jawab dengan tenang bahwa Anda akan mempertimbangkan kritik tersebut dan akan menindaklanjutinya jika diperlukan."
+    },
+    {
+      "skill_parameter": "EQ",
+      "question": "Rekan kerja Anda sedang menghadapi masalah pribadi yang berat dan kinerjanya menurun, tetapi dia tidak pernah membicarakan masalahnya. Bagaimana Anda dapat mendukungnya tanpa terlihat menghakimi?",
+      "answer": "Tanyakan secara pribadi apakah ada sesuatu yang bisa Anda bantu, lalu dengarkan tanpa memberikan penilaian. Tawarkan dukungan seperti waktu tambahan atau fleksibilitas untuk menyelesaikan masalah pribadinya."
+    },
+    {
+      "skill_parameter": "EQ",
+      "question": "Tim Anda menghadapi tekanan yang tinggi karena gagal memenuhi ekspektasi klien, dan suasana kantor menjadi tegang. Bagaimana Anda bisa menjaga semangat dan emosi tim agar tetap positif?",
+      "answer": "Akui kegagalan, namun arahkan fokus tim ke solusi daripada kesalahan. Dorong mereka untuk belajar dari pengalaman dan berikan motivasi bahwa ada kesempatan untuk memperbaiki keadaan."
+    },
+    {
+      "skill_parameter": "EQ",
+      "question": "Atasan Anda memberikan Anda tugas tambahan padahal pekerjaan Anda sudah menumpuk. Bagaimana Anda bisa mengelola perasaan Anda dan situasi tersebut secara efektif?",
+      "answer": "Berkomunikasi dengan jujur kepada atasan tentang beban kerja yang ada dan tawarkan alternatif prioritas tugas, tanpa menunjukkan rasa frustrasi atau perasaan tertekan."
+    },
+    {
+      "skill_parameter": "EQ",
+      "question": "Seorang rekan sering membawa masalah emosional pribadinya ke tempat kerja sehingga mengganggu produktivitasnya. Apa tindakan Anda untuk mendukungnya, tetapi tetap menjaga batasan profesional?",
+      "answer": "Ajak bicara secara personal untuk menawarkan dukungan emosional, namun juga tetapkan batasan tentang bagaimana masalah pribadi tidak boleh mempengaruhi lingkungan kerja. Sarankan bantuan profesional jika perlu."
+    },
+    {
+      "skill_parameter": "Creativity",
+      "question": "Perusahaan Anda sedang mengalami stagnasi ide untuk pengembangan produk baru. Bagaimana Anda akan memulai brainstorming dengan cara yang berbeda untuk menghasilkan ide-ide segar?",
+      "answer": "Gunakan teknik brainstorming seperti random word generation atau ajak tim untuk keluar dari rutinitas kantor, misalnya dengan melakukan brainstorming di tempat yang berbeda atau melakukan aktivitas kreatif seperti role play."
+    },
+    {
+      "skill_parameter": "Creativity",
+      "question": "Anda diberi tugas untuk membuat kampanye pemasaran produk yang sudah usang di mata konsumen. Bagaimana Anda bisa membuatnya relevan kembali tanpa anggaran besar?",
+      "answer": "Fokus pada aspek yang belum banyak dieksplorasi dari produk tersebut, atau buat narasi yang emosional, menghubungkan produk dengan pengalaman pelanggan secara personal. Bisa juga menggunakan strategi pemasaran guerrilla atau media sosial untuk memperluas jangkauan."
+    },
+    {
+      "skill_parameter": "Creativity",
+      "question": "Terdapat masalah kompleks di tempat kerja yang tampaknya sulit untuk dipecahkan oleh metode tradisional. Apa yang akan Anda lakukan untuk mendapatkan solusi kreatif yang di luar kebiasaan?",
+      "answer": "Gunakan teknik seperti design thinking atau ajak anggota tim dari departemen yang berbeda untuk memberikan perspektif baru. Terkadang pandangan dari orang luar dapat memicu ide segar."
+    },
+    {
+      "skill_parameter": "Creativity",
+      "question": "Anda harus mengorganisir acara besar namun ada keterbatasan anggaran dan waktu. Bagaimana Anda akan merancang acara yang tetap berkesan meskipun memiliki banyak keterbatasan?",
+      "answer": "Fokus pada pengalaman yang mendalam seperti acara interaktif atau menggunakan teknologi seperti VR/AR untuk menggantikan elemen yang memerlukan biaya besar. Selain itu, bisa memanfaatkan media sosial untuk membuat acara tersebut lebih viral."
+    },
+    {
+      "skill_parameter": "Creativity",
+      "question": "Anda harus menyusun ulang rencana kerja yang sudah terbukti efektif selama bertahun-tahun, namun kali ini harus dilakukan dalam waktu lebih cepat dan dengan sumber daya yang lebih sedikit. Apa pendekatan inovatif yang bisa Anda ambil?",
+      "answer": "Cobalah agile methodology atau buat sprints untuk menyelesaikan proyek dalam fase yang lebih kecil dan cepat. Juga, pertimbangkan otomatisasi tugas-tugas yang bisa dikurangi waktunya."
+    },
+    {
+      "skill_parameter": "Adaptability",
+      "question": "Anda baru saja dipindahkan ke cabang perusahaan di negara lain dengan budaya kerja yang sangat berbeda. Bagaimana Anda bisa cepat beradaptasi dengan lingkungan kerja yang baru?",
+      "answer": "Pelajari tentang budaya kerja lokal, baik secara formal maupun melalui observasi. Terbuka untuk belajar dari rekan kerja setempat dan secara proaktif menyesuaikan cara kerja dengan budaya lokal."
+    },
+    {
+      "skill_parameter": "Adaptability",
+      "question": "Tiba-tiba, perusahaan mengubah prioritas proyek dan Anda harus mengalihkan fokus dari proyek yang sedang Anda kerjakan. Bagaimana Anda mengelola peralihan ini?",
+      "answer": "Segera buat daftar prioritas baru, tinjau pekerjaan yang telah dilakukan, dan sesuaikan jadwal. Jangan menahan emosi negatif, tetap fokus pada hasil yang diharapkan dari proyek baru tersebut."
+    },
+    {
+      "skill_parameter": "Adaptability",
+      "question": "Anda bekerja di industri yang sangat dinamis, dan aturan pemerintah baru diterapkan yang mengharuskan perubahan cara kerja Anda secara drastis. Bagaimana Anda memastikan diri tetap relevan?",
+      "answer": "Cepat mempelajari aturan baru dan mencari pelatihan tambahan jika diperlukan. Beradaptasi dengan perubahan dengan sikap proaktif dan fleksibel dalam mencari solusi untuk kendala yang mungkin muncul."
+    },
+    {
+      "skill_parameter": "Adaptability",
+      "question": "Tim Anda menerima teknologi baru yang harus diimplementasikan segera, tetapi banyak anggota yang kesulitan beradaptasi. Bagaimana Anda bisa membantu tim agar cepat menguasainya?",
+      "answer": "Siapkan pelatihan langsung dan buat panduan langkah demi langkah. Dorong budaya saling membantu antar anggota tim yang sudah lebih cepat beradaptasi dengan yang lain."
+    },
+    {
+      "skill_parameter": "Adaptability",
+      "question": "Anda berada dalam situasi di mana pasar perusahaan Anda tiba-tiba mengalami krisis. Bagaimana Anda akan beradaptasi agar perusahaan tetap bisa bertahan?",
+      "answer": "Segera lakukan penilaian risiko dan buat rencana darurat. Fokus pada produk atau layanan yang paling stabil atau menjajaki peluang baru di pasar yang berpotensi lebih berkembang."
+    },
+    {
+      "skill_parameter": "Motivation",
+      "question": "Anda sedang mengerjakan proyek besar yang tidak mendapatkan penghargaan dari atasan dan tidak ada kenaikan gaji atau bonus. Apa yang akan membuat Anda tetap termotivasi untuk menyelesaikan proyek ini dengan baik?",
+      "answer": "Fokus pada pencapaian pribadi dan pengembangan diri. Pikirkan dampak positif jangka panjang proyek terhadap karir Anda, seperti pengalaman yang didapat atau jaringan yang lebih luas."
+    },
+    {
+      "skill_parameter": "Motivation",
+      "question": "Tim Anda mengalami kegagalan dalam menyelesaikan sebuah proyek penting dan semangat mereka menurun. Bagaimana Anda akan memotivasi tim Anda untuk kembali bekerja dengan semangat yang tinggi?",
+      "answer": "Akui kesalahan, tetapi arahkan tim untuk melihat kegagalan sebagai pembelajaran. Berikan tujuan kecil yang lebih mudah dicapai untuk membangun kembali rasa percaya diri dan motivasi."
+    },
+    {
+      "skill_parameter": "Motivation",
+      "question": "Anda sedang dihadapkan pada rutinitas kerja yang sangat membosankan. Tidak ada tantangan baru dan pekerjaan terasa monoton. Apa yang Anda lakukan untuk tetap termotivasi?",
+      "answer": "Carilah cara untuk membuat tugas lebih menantang, seperti menetapkan target waktu yang lebih singkat atau mencari cara untuk menyelesaikan tugas dengan lebih efisien. Juga, temukan peluang pengembangan diri di luar pekerjaan rutin."
+    },
+    {
+      "skill_parameter": "Motivation",
+      "question": "Anda ditugaskan untuk memimpin proyek yang kurang Anda sukai dan di luar minat Anda. Bagaimana Anda tetap bisa berkomitmen dan termotivasi?",
+      "answer": "Fokus pada pencapaian yang bisa Anda raih dari proyek ini, seperti pengembangan keterampilan baru atau dampak positif bagi perusahaan. Pikirkan tentang kontribusi jangka panjang pada karir Anda."
+    },
+    {
+      "skill_parameter": "Motivation",
+      "question": "Tugas-tugas yang Anda terima dalam beberapa bulan terakhir terasa terlalu mudah dan tidak menantang. Bagaimana Anda bisa tetap termotivasi meski merasa kurang tertantang?",
+      "answer": "Cobalah mengambil proyek tambahan atau mencari tanggung jawab baru yang lebih menantang. Jika memungkinkan, ajukan proposal untuk mengembangkan proyek yang lebih inovatif."
+    }
+]

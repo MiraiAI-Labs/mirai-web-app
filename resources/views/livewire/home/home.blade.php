@@ -8,7 +8,7 @@
             <section class="grid grid-cols-1">
                 <div class="bg-base-100 rounded-xl flex justify-center items-center min-h-80 p-12 flex-col items-center">
                     <h3 class="text-lg sm:text-2xl font-semibold my-12">Posisi apa yang kamu inginkan ?</h3>
-                    <livewire:components.choose-position :showRecommendations="true" />
+                    <livewire:components.choose-position :showRecommendations="true" :home="true" />
                 </div>
             </section>
         @else

@@ -101,18 +101,6 @@
     }
 }
 
-.text-theme {
-    @apply text-black;
-}
-
-.text-theme.light {
-    @apply text-black;
-}
-
-.text-theme.dark {
-    @apply text-white;
-}
-
 .btn-orange-gradient {
     background: linear-gradient(90deg, rgba(255, 229, 0, 1) 0%, rgba(255, 144, 0, 1) 100%);
 }
