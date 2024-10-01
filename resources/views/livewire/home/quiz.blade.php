@@ -27,11 +27,22 @@
                 <button class="btn btn-lg btn-orange-gradient normal-case text-black" x-on:click="$wire.dispatch('start-upskill')">Enter Arena</button>
             </div>
         </div>
+
+        <div class="shadow rounded-[0.875rem] min-h-80 p-0.5 bg-gradient-to-r from-[#FFE500] to-[#FF9000]">
+            <div class="rounded-xl bg-base-100 w-full h-full p-8 flex justify-center items-center flex-col">
+                <img src="{{ asset("images/user-octagon.png") }}" alt="">
+                <h1 class="text-black dark:text-white text-3xl font-bold my-2 text-center">Find Your Archetype</h1>
+                <h2 class="text-black dark:text-white text-sm font-light mb-4 text-center">Wondering what your archetype is? Find them here!</h2>
+                <button class="btn btn-lg btn-orange-gradient normal-case text-black" x-on:click="$wire.dispatch('start-archetype')">Enter Arena</button>
+            </div>
+        </div>
     </section>
 
     <livewire:components.flash-quiz />
 
     <livewire:components.upskill-quiz />
+
+    <livewire:components.archetype-quiz />
 </div>
 
 @section('scripts')
@@ -40,6 +51,14 @@
         document.addEventListener('livewire:init', function () {
             Livewire.on('start-upskill', () => {
                 document.getElementById('quizzesList').classList.add('hidden');
+            });
+
+            Livewire.on('start-archetype', () => {
+                document.getElementById('quizzesList').classList.add('hidden');
+            });
+
+            Livewire.on('refresh-quiz', () => {
+                location.reload();
             });
         });
     </script>

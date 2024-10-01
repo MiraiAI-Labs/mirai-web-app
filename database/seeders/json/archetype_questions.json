@@ -1,0 +1,554 @@
+[
+    {
+        "archetype": "The Architect",
+        "question": "Saya menikmati membangun sesuatu dari awal, baik itu sistem, perangkat lunak, atau produk fisik."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya menikmati membangun sesuatu dari awal, baik dalam bentuk fisik maupun digital."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya suka merancang struktur atau sistem yang terorganisir dengan baik."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya merasa puas ketika melihat hasil kerja saya berkembang dari tahap ide hingga menjadi sesuatu yang fungsional."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya lebih suka terlibat dalam proses pengembangan dibandingkan memimpin atau mengelola proyek."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya lebih suka fokus pada proses teknis daripada aspek kreatif proyek."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya menikmati mencari solusi teknis untuk masalah yang rumit."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya senang mengikuti proyek dari perencanaan hingga implementasi penuh."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya merasa termotivasi ketika melihat hasil nyata dari pekerjaan saya."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya cenderung lebih memilih bekerja dengan alat dan teknologi yang sudah ada untuk menciptakan sesuatu yang baru."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya lebih tertarik pada pengembangan perangkat lunak daripada pada desain atau manajemen."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Ketelitian dalam pembangunan atau pengembangan sangat penting bagi saya."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya merasa nyaman bekerja sendiri untuk waktu yang lama pada satu proyek besar."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya sering menggunakan logika dan keterampilan pemecahan masalah dalam pekerjaan saya."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya senang belajar bahasa pemrograman atau alat baru yang bisa saya gunakan untuk membangun sesuatu."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya cenderung mengambil peran utama dalam pengembangan proyek besar."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya menikmati mengembangkan sesuatu dengan kode, bukan hanya mengonfigurasi atau mengoptimalkan."
+    },
+    {
+        "archetype": "The Architect",
+        "question": "Saya nyaman bekerja dengan bahasa pemrograman dan perangkat teknis."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya suka mencari dan menguji kelemahan dalam sistem."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya tertarik menemukan celah atau kerentanan dalam sistem yang ada."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya merasa bersemangat ketika berhasil menemukan dan mengeksploitasi celah keamanan atau bug dalam perangkat lunak."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya merasa puas ketika berhasil menemukan masalah yang orang lain lewatkan."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya lebih suka menguji dan memastikan keamanan dibandingkan membuat sesuatu dari awal."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya menikmati menguji sistem secara menyeluruh dan menemukan area-area yang bisa diperbaiki."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya merasa kepuasan ketika berhasil mengungkap masalah tersembunyi dalam produk atau sistem."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya sering berpikir secara kritis tentang bagaimana sistem bisa diserang atau dieksploitasi."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya merasa lebih nyaman ketika menjaga keamanan daripada menciptakan sesuatu yang baru."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya tertarik pada bidang keamanan siber atau pengujian perangkat lunak."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya merasa tertantang oleh ide untuk menggagalkan atau `meretas` sesuatu dalam rangka memperbaikinya."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya cenderung fokus pada kualitas dan stabilitas sistem yang saya uji."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya suka menguji batasan dan menganalisis kegagalan suatu sistem."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Keamanan dan stabilitas sistem adalah hal yang penting bagi saya."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya suka berpikir dari perspektif seorang peretas untuk mengantisipasi risiko."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya menikmati memecahkan masalah sulit yang berkaitan dengan bug atau kerentanan."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya merasa penting untuk selalu menjaga kualitas dan keamanan dalam pekerjaan saya."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya merasa tertantang oleh sistem yang rumit dan sulit dipecahkan."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya senang melakukan review dan audit untuk memastikan sistem berjalan sesuai harapan."
+    },
+    {
+        "archetype": "The Shadowbroker",
+        "question": "Saya merasa puas jika dapat memperbaiki kesalahan yang signifikan dalam suatu produk atau layanan."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya tertarik pada pemikiran konseptual dan logis."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya menikmati menganalisis data dan menyusunnya menjadi ide atau sistem baru."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya cenderung berpikir mendalam tentang bagaimana sistem bekerja dan bagaimana mereka bisa diperbaiki."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya merasa tertarik pada penelitian dan pengembangan teori-teori baru."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya sering menggunakan data untuk membuat keputusan dalam pekerjaan saya."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya tertarik pada kecerdasan buatan dan pembelajaran mesin sebagai alat untuk inovasi."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya menikmati proses analisis yang membutuhkan logika dan rasionalitas yang mendalam."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya lebih memilih merancang sistem daripada mengelola orang atau proyek."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya merasa puas ketika menemukan solusi yang elegan untuk masalah yang rumit."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya sering menggabungkan ilmu pengetahuan dan logika dalam pekerjaan saya."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya suka menganalisis data dan memecahkan masalah melalui pendekatan logis."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya tertarik dalam memahami teori dan prinsip yang mendasari suatu teknologi atau sistem."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya suka merancang solusi konseptual sebelum mengimplementasikannya."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya menikmati bekerja pada proyek yang memerlukan pemikiran mendalam dan abstrak."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya lebih suka mengembangkan strategi jangka panjang daripada sekadar solusi praktis jangka pendek."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya tertarik pada perkembangan kecerdasan buatan, pembelajaran mesin, atau penelitian lanjutan."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya merasa nyaman berurusan dengan konsep-konsep yang sangat teoretis."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya sering mencari cara baru untuk memecahkan masalah yang sudah ada."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya suka mengerjakan proyek yang menggabungkan filsafat, data, dan teknologi."
+    },
+    {
+        "archetype": "The Philosopher",
+        "question": "Saya cenderung berpikir dalam skala besar, tentang bagaimana teknologi mempengaruhi masyarakat."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya merasa senang ketika bisa mengekspresikan kreativitas saya melalui desain atau inovasi."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya lebih suka fokus pada aspek estetika dan pengalaman pengguna daripada sisi teknis sebuah produk."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya merasa nyaman menggabungkan unsur-unsur kreatif dengan teknologi untuk menciptakan sesuatu yang baru."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya menikmati merancang antarmuka pengguna atau pengalaman pengguna yang intuitif."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya lebih tertarik pada desain dan visual daripada pada aspek-aspek teknis dari sebuah produk."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya cenderung berpikir `out of the box` dan suka bereksperimen dengan ide-ide baru."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya merasa inspirasi datang ketika bekerja di lingkungan yang mendukung kreativitas."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya sering memikirkan bagaimana produk atau layanan bisa terlihat dan terasa lebih menarik."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya suka berinovasi dalam hal visual dan pengalaman pengguna."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya tertarik pada seni dan desain, baik di dunia nyata maupun digital."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya merasa terinspirasi oleh estetika dan desain dalam pekerjaan saya."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya suka menciptakan pengalaman pengguna yang indah dan intuitif."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya lebih suka bekerja dengan elemen visual dan kreatif daripada aspek teknis."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya percaya bahwa inovasi berasal dari kreativitas dan eksplorasi."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya tertarik pada bagaimana orang berinteraksi dengan produk dan sistem yang saya desain."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya sering berpikir tentang bagaimana cara meningkatkan tampilan dan nuansa dari suatu produk."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya lebih suka menggunakan kreativitas untuk memecahkan masalah daripada menggunakan logika murni."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya merasa tertantang untuk membuat sesuatu yang tidak hanya berfungsi, tetapi juga memiliki nilai seni."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya menikmati proses merancang tampilan antarmuka pengguna."
+    },
+    {
+        "archetype": "The Artist",
+        "question": "Saya lebih fokus pada inovasi daripada pengulangan proses yang sudah ada."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya tertarik pada ide-ide baru dan suka mendorong batasan-batasan teknologi."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya lebih suka mengembangkan konsep-konsep baru daripada hanya mengikuti yang sudah ada."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya merasa puas ketika menemukan cara-cara inovatif untuk memecahkan masalah."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya sering mencari teknologi baru yang bisa saya terapkan dalam pekerjaan saya."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya lebih suka bereksperimen dengan ide-ide baru daripada hanya mengoptimalkan yang sudah ada."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya merasa tertantang oleh masalah yang belum pernah dipecahkan sebelumnya."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya suka menjelajahi cara-cara baru untuk menggabungkan teknologi dan kreativitas."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya tertarik pada pekerjaan yang melibatkan penelitian dan pengembangan produk atau teknologi baru."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya senang berkolaborasi dengan orang lain untuk menciptakan sesuatu yang belum pernah ada sebelumnya."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya cenderung berinovasi dan mendorong batasan dari apa yang dianggap mungkin."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya suka bereksperimen dengan teknologi baru dan tidak takut mencoba sesuatu yang belum pernah dilakukan."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya merasa terinspirasi oleh ide-ide baru dan tren teknologi masa depan."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya suka memikirkan cara untuk memperbaiki sistem atau teknologi yang ada."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya merasa puas ketika saya berhasil menciptakan solusi yang belum pernah terpikirkan oleh orang lain."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya lebih tertarik untuk mendorong batasan teknis daripada hanya mengikuti aturan yang ada."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya senang bekerja di lingkungan yang mendukung eksplorasi ide dan konsep baru."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya lebih tertarik pada proyek yang memiliki potensi perubahan besar daripada peningkatan kecil."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya cenderung berpikir jauh ke depan tentang apa yang bisa terjadi dalam teknologi atau produk."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya tertarik menggabungkan ide kreatif dengan keterampilan teknis untuk menghasilkan inovasi."
+    },
+    {
+        "archetype": "The Innovator",
+        "question": "Saya merasa penting untuk selalu bergerak maju dan memperkenalkan sesuatu yang baru."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya lebih suka mengelola proyek dan tim daripada bekerja sendirian pada detail teknis."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya merasa puas ketika bisa membantu tim saya mencapai tujuan mereka."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya menikmati memimpin dan memastikan proyek berjalan sesuai dengan rencana."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya lebih tertarik pada pengelolaan proyek dan sumber daya daripada pada pembuatan produk itu sendiri."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya merasa nyaman membuat keputusan besar yang memengaruhi jalannya proyek atau tim."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya tertarik pada peran yang memungkinkan saya untuk mengambil tanggung jawab dalam mengelola orang dan proses."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya senang mengorganisir tim dan proyek untuk memastikan semuanya berjalan lancar."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya cenderung berpikir secara strategis tentang bagaimana mencapai tujuan organisasi atau proyek."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya menikmati memberikan arahan kepada tim untuk mencapai hasil terbaik."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya lebih fokus pada hasil akhir daripada pada proses teknis untuk mencapainya."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya merasa nyaman mengambil peran sebagai pemimpin dalam tim atau proyek."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya senang memastikan bahwa setiap anggota tim berfungsi dengan baik dan proyek berjalan lancar."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya sering berfokus pada manajemen sumber daya dan alokasi waktu untuk mencapai hasil terbaik."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya percaya bahwa organisasi dan perencanaan yang baik adalah kunci kesuksesan."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya menikmati mengarahkan orang lain dan memastikan bahwa semua orang berada di jalur yang sama."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya merasa nyaman berkomunikasi dengan berbagai pihak untuk mencapai tujuan bersama."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya senang membuat keputusan yang memengaruhi arah proyek secara keseluruhan."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya lebih suka memastikan proyek berjalan efisien daripada terlibat dalam detail teknis."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya cenderung melihat gambaran besar dalam pekerjaan saya, daripada hanya detail kecil."
+    },
+    {
+        "archetype": "The Ruler",
+        "question": "Saya merasa puas ketika tim saya bekerja dengan baik dan mencapai target."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya menikmati peran sebagai penghubung antara tim teknis dan non-teknis."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya merasa puas ketika memastikan bahwa komunikasi berjalan lancar antara berbagai bagian organisasi."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya tertarik pada pengelolaan kolaborasi antar tim."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya merasa senang ketika bisa membantu menyelaraskan tujuan dan tugas dari berbagai departemen."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya lebih suka bekerja pada peran yang melibatkan koordinasi antara orang-orang dengan keahlian yang berbeda-beda."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya sering memikirkan bagaimana memperbaiki komunikasi dan alur kerja di antara tim yang berbeda."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya lebih suka mengatur dan memastikan kolaborasi tim daripada fokus pada aspek teknis."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya tertarik pada pengelolaan proses kerja tim agar lebih efisien dan efektif."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya merasa puas ketika melihat tim bekerja sama dengan lancar dan mencapai tujuan bersama."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya cenderung fokus pada bagaimana orang-orang bekerja sama daripada pada bagaimana sistem teknis bekerja."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya menikmati bekerja sebagai jembatan antara tim teknis dan non-teknis."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya senang memastikan bahwa komunikasi antar tim berjalan dengan lancar."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya merasa penting untuk menjaga kolaborasi yang baik dalam proyek."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya sering mencari cara untuk memperbaiki alur kerja dan proses antar departemen."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya suka mengelola harapan dari berbagai pihak yang terlibat dalam proyek."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya percaya bahwa keberhasilan proyek bergantung pada komunikasi yang efektif."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya merasa nyaman beradaptasi dengan berbagai kebutuhan tim yang berbeda."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya sering menjadi penghubung ketika ada perbedaan pemahaman di antara tim yang berbeda."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya senang membantu mengoordinasikan berbagai bagian proyek agar berjalan sesuai rencana."
+    },
+    {
+        "archetype": "The Conductor",
+        "question": "Saya lebih fokus pada hubungan antar tim daripada hanya mengerjakan aspek teknis."
+    }
+]
