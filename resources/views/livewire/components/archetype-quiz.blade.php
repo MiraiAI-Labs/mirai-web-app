@@ -19,7 +19,13 @@
         } */
     </style>
 
-    <div class="flex flex-col-reverse md:flex-row gap-6 text-black dark:text-white pop-anim w-full" x-cloak x-show="show">
+    <div class="w-full h-[50svh] flex" wire:target="start" wire:loading>
+        <div class="w-full h-full flex justify-center items-center">
+            <div class="loading loading-spinner w-16"></div>
+        </div>
+    </div>
+
+    <div class="flex flex-col-reverse md:flex-row gap-6 text-black dark:text-white pop-anim w-full" x-cloak x-show="show" wire:target="start" wire:loading.remove>
         <div class="w-full md:w-3/4">
             @foreach($questions as $question)
                 <div class="rounded-xl shadow bg-base-100 p-8" x-cloak x-show="currentQuestion === {{ $loop->index }}">
@@ -82,7 +88,7 @@
                 @endfor
             </div>
 
-            <button class="btn w-full btn-orange-gradient text-black mt-4" wire:click="submit">
+            <button class="btn w-full btn-orange-gradient !text-black mt-4" wire:click="submit" wire:target="submit" wire:loading.attr="disabled">
                 <span wire:loading.remove wire:target="submit">
                     <i class="fa-solid fa-paper-plane"></i> Submit
                 </span>
@@ -91,7 +97,7 @@
             </button>
 
             @if (app()->environment('local'))
-                <button class="btn w-full btn-orange-gradient text-black mt-4" wire:click="randomizeAnswers">
+                <button class="btn w-full btn-orange-gradient !text-black mt-4" wire:click="randomizeAnswers" wire:target="randomizeAnswers" wire:loading.attr="disabled">
                     <span wire:loading.remove wire:target="randomizeAnswers">
                         Randomize Answers
                     </span>

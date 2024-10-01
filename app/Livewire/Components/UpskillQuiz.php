@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Http;
 use App\Traits\ToastDispatchable;
 
+use function PHPSTORM_META\map;
+
 class UpskillQuiz extends BaseController
 {
     use ToastDispatchable;
@@ -18,19 +20,27 @@ class UpskillQuiz extends BaseController
 
     public $questions = [];
     public $answers = [];
+    public $feedbacks = [];
+    public $nilais = [];
+    public $nilaiPerCategory = [];
+    public $average = 0;
+
     public int $currentQuestion = 0;
     public int $totalQuestions = 0;
+    public bool $evaluated = false;
+
+    public int $questionPerParameter = 1;
 
     public $api_url = "";
 
     public function mount()
     {
-        $this->api_url = env("INTERVIEW_API_URL", "http://localhost:8000");
+        $this->api_url = env("JOB_API_URL", "http://localhost:8001");
     }
 
     public function start()
     {
-        $this->questions = UpskillQuestionBank::getQuestions();
+        $this->questions = UpskillQuestionBank::getQuestions($this->questionPerParameter);
         $this->totalQuestions = count($this->questions);
     }
 
@@ -51,7 +61,40 @@ class UpskillQuiz extends BaseController
             return;
         }
 
-        dd($this->answers);
+        $request = [];
+
+        foreach ($this->answers as $key => $answer) {
+            $request[] = [
+                "question" => $this->questions[$key]->question,
+                "answer" => $this->questions[$key]->answer,
+                "userAnswer" => $answer,
+            ];
+        }
+
+        $response = Http::post($this->api_url . "/upskill-judge", $request);
+
+        $response = $response->json();
+
+        $sum = 0;
+        foreach ($response as $key => $value) {
+            $this->feedbacks[$key] = $value["feedback"];
+            $this->nilais[$key] = $value["nilai"];
+            $sum += $value["nilai"];
+
+            if (!array_key_exists($this->questions[$key]->skill_parameter->value, $this->nilaiPerCategory)) {
+                $this->nilaiPerCategory[$this->questions[$key]->skill_parameter->value] = 0;
+            }
+
+            $this->nilaiPerCategory[$this->questions[$key]->skill_parameter->value] += $value["nilai"];
+        }
+
+        $this->nilaiPerCategory = array_map(function ($nilai) {
+            return $nilai / $this->questionPerParameter;
+        }, $this->nilaiPerCategory);
+
+        $this->average = $sum / count($response);
+
+        $this->evaluated = true;
     }
 
     public function render()

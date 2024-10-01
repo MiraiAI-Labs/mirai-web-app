@@ -22,13 +22,12 @@ class UpskillQuestionBank extends Model
 
     public static function getRandomizedQuestions($skillParameter, $limit = 5)
     {
-        $result = self::where('skill_parameter', $skillParameter)->inRandomOrder()->limit($limit)->get()->select(['id', 'question']);
+        $result = self::select('id', 'question')->where('skill_parameter', $skillParameter)->inRandomOrder()->limit($limit)->get();
         return $result;
     }
 
-    public static function getQuestions(): Collection
+    public static function getQuestions($perParameter = 3): Collection
     {
-        $perParameter = 3;
         $skillParameters = SkillParameterEnum::toArray();
 
         $questions = collect();
