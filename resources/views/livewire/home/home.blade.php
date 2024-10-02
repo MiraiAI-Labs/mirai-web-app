@@ -27,13 +27,23 @@
     
                 @if($this->analysis_json)
                 
-                <div x-cloak x-show="fetched" class="grid grid-cols-8 grid-rows-1 gap-3">
+                <div x-cloak x-show="fetched" class="flex w-full h-full gap-4">
     
-                    <livewire:components.UserClass class="row-span-1 col-span-3"/>
+                    <livewire:components.UserClass class="w-3/5"/>
                     
-                    <livewire:components.UserPerformance class="row-span-1 col-span-2"/>
+                    <div class="w-2/5 flex flex-col gap-4">
+                        <livewire:components.UserPerformance class="row-span-1 col-span-2"/>
+                        
+                        <div class="bg-base-100 rounded-xl flex flex-col justify-center items-center p-4 gap-2">
+                            <h1 class="text-xl font-bold text-white text-center">Lihat progres perjalananmu disini!</h1>
+                            <p class="text-sm text-center">
+                                Pantau sudah sejauh apa Anda dalam perjalanan ke bidang karir impianmu. Ingat, konsistensi dan disiplin adalah kunci keberhasilan.
+                            </p>
+                            <button class="btn btn-orange-gradient text-black">Lanjutkan Perjalanan</button>
+                        </div>
+                    </div>
                     
-                    <div id="indicators-carousel" class="relative w-full row-span-1 col-span-3" data-carousel="static" wire:ignore>
+                    <div id="indicators-carousel" class="relative w-full w-3/5" data-carousel="static" wire:ignore>
                         <!-- Carousel wrapper -->
                         <div class="relative overflow-hidden rounded-lg h-full">
     

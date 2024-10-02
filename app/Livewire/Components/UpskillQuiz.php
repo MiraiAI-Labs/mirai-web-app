@@ -5,8 +5,10 @@ namespace App\Livewire\Components;
 use App\Livewire\BaseController;
 use App\Models\UpskillQuestionBank;
 use App\Models\User;
+use App\Models\UserStatistic;
 use Illuminate\Support\Facades\Http;
 use App\Traits\ToastDispatchable;
+use App\Utils\NilaiHelper;
 
 use function PHPSTORM_META\map;
 
@@ -54,9 +56,45 @@ class UpskillQuiz extends BaseController
         $this->currentQuestion = $questionNumber;
     }
 
-    public function submit()
+    public function retry()
     {
-        if (count($this->answers) < count($this->questions)) {
+        $this->answers = [];
+        $this->feedbacks = [];
+        $this->nilais = [];
+        $this->nilaiPerCategory = [];
+        $this->average = 0;
+        $this->evaluated = false;
+        $this->currentQuestion = 0;
+
+        $this->start();
+
+        $this->dispatch('retry-upskill');
+    }
+
+    public function forceSubmit()
+    {
+        for ($i = 0; $i < $this->totalQuestions; $i++) {
+            if (!array_key_exists($i, $this->answers)) {
+                $this->answers[$i] = "";
+            }
+        }
+
+        $this->submit(true);
+    }
+
+    public function resubmit()
+    {
+        $this->feedbacks = [];
+        $this->nilais = [];
+        $this->nilaiPerCategory = [];
+        $this->average = 0;
+        $this->evaluated = false;
+        $this->submit();
+    }
+
+    public function submit($force = false)
+    {
+        if (!$force && count($this->answers) < count($this->questions)) {
             $this->toastError("Please answer all questions before submitting.");
             return;
         }
@@ -95,6 +133,25 @@ class UpskillQuiz extends BaseController
         $this->average = $sum / count($response);
 
         $this->evaluated = true;
+
+        $this->evaluate();
+    }
+
+    public function evaluate()
+    {
+        $userStatistic = UserStatistic::where('user_id', auth()->id())->first();
+
+        $nilai = new NilaiHelper();
+
+        foreach ($this->nilaiPerCategory as $category => $value) {
+            $lcParameter = strtolower($category);
+
+            $nilai->$lcParameter = $value / 10;
+        }
+
+        $nilai->exp = 100;
+
+        $userStatistic->evaluate($nilai);
     }
 
     public function render()

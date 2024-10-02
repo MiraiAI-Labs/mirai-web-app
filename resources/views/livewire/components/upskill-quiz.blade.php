@@ -19,6 +19,24 @@
                     </div>
                 @endforeach
             </div>
+
+            <button class="btn w-full btn-orange-gradient !text-black" wire:click="retry" wire:target="retry" wire:loading.attr="disabled">
+                <i class="fa-solid fa-repeat"></i>
+                    Retry
+                </span>
+
+                <span class="loading loading-spinner" wire:loading wire:target="retry"></span>
+            </button>
+
+            @if (app()->environment('local'))
+                <button class="btn w-full btn-orange-gradient !text-black" wire:click="submit" wire:target="submit" wire:loading.attr="disabled">
+                    <span wire:loading.remove wire:target="submit">
+                        Resubmit
+                    </span>
+    
+                    <span class="loading loading-spinner" wire:loading wire:target="submit"></span>
+                </button>
+            @endif
         </div>
         
         <div class="w-full md:w-3/4 gap-6 flex flex-col">
@@ -108,11 +126,17 @@
                         @this.start();
                     });
 
+                    Livewire.on('retry-upskill', () => {
+                        t.show = true;
+                        t.resetTimer();
+                        t.startTimer();
+                    });
                 },
                 startTimer() {
                     let t = this;
-                    const expiry = new Date().getTime() + 15 * 60 * 1000;
-                    setInterval(() => {
+                    // const expiry = new Date().getTime() + 15 * 60 * 1000;
+                    const expiry = new Date().getTime() + 10 * 1000;
+                    let timer = setInterval(() => {
                         const now = new Date().getTime();
                         const distance = expiry - now;
                         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -120,7 +144,21 @@
                         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
                         t.time = { days, hours, minutes, seconds };
+
+                        // check if time is up
+                        if (distance < 0) {
+                            clearInterval(timer);
+                            @this.forceSubmit();
+                        }
                     }, 1000);
+                },
+                resetTimer() {
+                    this.time = {
+                        days: 0,
+                        hours: 0,
+                        minutes: 0,
+                        seconds: 0
+                    };
                 },
                 time: {
                     days: 0,

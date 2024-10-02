@@ -43,6 +43,9 @@ class QuizQuestion extends BaseController
             if (($key == $value) || $rightOption) {
                 $this->labelStyle[$key] = $rightOption ? 'input-success' : 'input-error';
             }
+
+            if ($value == $key && $rightOption)
+                $this->dispatch('right-answer-flash-quiz');
         }
     }
 

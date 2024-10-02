@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Utils\NilaiHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
@@ -33,6 +34,33 @@ class UserStatistic extends Model
         'current_exp_on_current_level',
         'performance',
     ];
+
+    private function exponentialMovingAverage($current, $previous, $alpha = 0.25)
+    {
+        return $alpha * $current + (1 - $alpha) * $previous;
+    }
+
+    public function evaluate(NilaiHelper $nilai)
+    {
+        $nilaiArray = $nilai->toArray();
+
+        foreach ($nilaiArray as $key => $value) {
+            if ($value !== null) {
+                if ($key == 'exp') {
+                    $this->$key += $value;
+                    continue;
+                }
+
+                if ($this->$key == 0) {
+                    $this->$key = ($value > 100) ? $value / 10 : $value;
+                } else {
+                    $this->$key = $this->exponentialMovingAverage(($value > 100) ? $value / 10 : $value, $this->$key);
+                }
+            }
+        }
+
+        $this->save();
+    }
 
     public function archetype()
     {

@@ -1,4 +1,4 @@
-<div class="relative overflow-hidden rounded-lg flex flex-col shadow bg-base-100 p-2 gap-1 {{ $class ?? '' }}">
+<div class="relative overflow-hidden rounded-lg flex flex-col justify-center shadow bg-base-100 p-2 gap-1 {{ $class ?? '' }}">
     @if($inHome)
         <a id="toggle-archetype-article" class="fa-solid fa-circle-question absolute top-2 right-3 text-xl text-black dark:text-white hover:text-grey cursor-pointer" @click="toggleArticle"></a>
     @endif

@@ -5,8 +5,10 @@ namespace App\Livewire\Components;
 use App\Livewire\BaseController;
 use App\Models\JobsAnalysis;
 use App\Models\User;
+use App\Models\UserStatistic;
 use Illuminate\Support\Facades\Http;
 use App\Traits\ToastDispatchable;
+use App\Utils\NilaiHelper;
 
 class FlashQuiz extends BaseController
 {
@@ -15,13 +17,18 @@ class FlashQuiz extends BaseController
     protected $listeners = [
         'nextQuestion' => 'nextQuestion',
         'refresh' => '$refresh',
+        'right-answer-flash-quiz' => 'rightAnswer',
+        'quizCompleted' => 'evaluate',
     ];
 
     public $questions = [];
 
     public bool $loading = false;
     public bool $loaded = false;
+    public bool $completed = false;
     public int $currentQuestion = 0;
+
+    public int $rightAnswers = 0;
 
     public $api_url = "";
     public $positionName = "";
@@ -35,8 +42,14 @@ class FlashQuiz extends BaseController
         $this->positionName = $user->position->name;
     }
 
+    public function rightAnswer()
+    {
+        $this->rightAnswers++;
+    }
+
     public function start()
     {
+        $this->completed = false;
         $stringifiedQueries = http_build_query([
             'position' => $this->positionName,
         ]);
@@ -59,9 +72,7 @@ class FlashQuiz extends BaseController
     {
         if ($this->currentQuestion == count($this->questions) - 1) {
             $this->toastSuccess('Quiz completed!');
-            $this->currentQuestion = 0;
-            $this->loaded = false;
-            $this->loading = false;
+            $this->completed = true;
             $this->dispatch('quizCompleted');
             return;
         }
@@ -69,13 +80,34 @@ class FlashQuiz extends BaseController
         $this->currentQuestion++;
     }
 
+    public function evaluate()
+    {
+        $userStatistic = UserStatistic::where('user_id', auth()->id())->first();
+
+        $nilai = new NilaiHelper();
+
+        $nilai->cognitive = $this->rightAnswers;
+        $nilai->exp = 50;
+
+        $userStatistic->evaluate($nilai);
+    }
+
     public function timeout()
     {
         $this->toastError('Quiz timed out');
-        $this->currentQuestion = 0;
+        $this->completed = true;
+        $this->dispatch('quizCompleted');
+    }
+
+    public function done()
+    {
         $this->loaded = false;
         $this->loading = false;
-        $this->dispatch('quizCompleted');
+        $this->completed = false;
+
+        $this->currentQuestion = 0;
+        $this->rightAnswers = 0;
+        $this->questions = [];
     }
 
     public function render()

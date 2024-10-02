@@ -109,6 +109,12 @@
     background: linear-gradient(to right top, #2cb0f1, #20a4e9, #1597e0, #0c8bd7, #097fce);
 }
 
+.text-orange-gradient {
+    background: linear-gradient(90deg, rgba(255, 229, 0, 1) 0%, rgba(255, 144, 0, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.

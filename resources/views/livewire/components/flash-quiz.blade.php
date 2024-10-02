@@ -33,7 +33,7 @@
 
     <div class="mt-4">
         @foreach($questions as $number => $question)
-            <div x-show="currentQuestion === {{ $number }}">
+            <div x-show="!completed && currentQuestion === {{ $number }}">
                 @php
                     $salt = base64_decode(substr(env('APP_KEY'), 7));
                     $hashedAnswer = md5($question['answer'] . $salt);
@@ -41,6 +41,15 @@
                 <livewire:components.quiz-question :question="$question['question']" :options="$question['options']" :answer="$hashedAnswer" :number="$number" wire:key="question-{{ $number }}" />
             </div>
         @endforeach
+
+        <div x-show="completed">
+            <div class="shadow bg-base-100 rounded-xl flex gap-6 justify-center items-center min-h-80 p-12 flex-col items-center">
+                <header class="text-2xl font-semibold mb-6">Quiz Selesai</header>
+                <p class="text-lg text-center">Nilai anda adalah</p>
+                <h1 class="text-4xl font-bold text-orange-gradient" x-text="rightAnswers*10"></h1>
+                <button class="btn btn-lg btn-orange-gradient normal-case text-black mt-6" wire:click="done">Selesai</button>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -65,6 +74,9 @@
             loading: @entangle('loading'),
             loaded: @entangle('loaded'),
             currentQuestion: @entangle('currentQuestion'),
+            completed: @entangle('completed'),
+            rightAnswers: @entangle('rightAnswers'),
+            totalQuestions: 10,
             start() {
                 this.loading = true;
                 @this.start();
