@@ -22,12 +22,20 @@ class CurriculumVitae extends BaseController
 
     public $cv;
     public $review = "";
+    public $review_before = "";
+    public $json_review = [];
+
+    public int $review_state = 0;
 
     public $loading = false;
+
+    public bool $polling = false;
 
     public function mount()
     {
         $this->checkFetched();
+
+        $this->pollingReviewResult(true);
     }
 
     public function checkFetched()
@@ -42,6 +50,29 @@ class CurriculumVitae extends BaseController
         }
 
         $this->dispatch('refreshComponent');
+    }
+
+    public function reupload()
+    {
+        $this->review_state = 0;
+        $this->polling = false;
+    }
+
+    public function remove()
+    {
+        $cv_review = CVReview::where('user_id', auth()->id())->orderBy('created_at', 'desc')->first();
+
+        if ($cv_review) {
+            $cv_review->delete();
+        }
+
+        $this->cv = null;
+        $this->review = "";
+        $this->review_before = "";
+        $this->json_review = [];
+        $this->review_state = 0;
+        $this->loading = false;
+        $this->polling = false;
     }
 
     public function updatedCv()
@@ -68,24 +99,53 @@ class CurriculumVitae extends BaseController
         if ($response->ok()) {
             $this->toastInfo('Please wait while we analyze your CV');
             $this->loading = true;
+            $this->polling = true;
         } else {
             $this->toastError('Something went wrong, please try again');
         }
     }
 
-    public function pollingReviewResult()
+    public function pollingReviewResult($pollAnyway = false)
     {
+        if (!$pollAnyway && !$this->polling) {
+            return;
+        }
+
         $cv_review = CVReview::where('user_id', auth()->id())->orderBy('created_at', 'desc')->first();
 
         if (!$cv_review) {
+            $this->review = null;
+            $this->review_state = -1;
             return;
         }
 
         $this->review = $cv_review->result;
 
+        if ($this->review != $this->review_before) {
+            $this->polling = false;
+        }
+
         if ($this->review) {
             $this->loading = false;
         }
+
+        if ($cv_review == null) {
+            $this->review_state = 0;
+            return;
+        }
+
+        if (is_string($cv_review->result) && is_array(json_decode($cv_review->result, true)) && (json_last_error() == JSON_ERROR_NONE)) {
+            $this->json_review = json_decode($cv_review->result, true);
+            $this->review_state = 1;
+            return;
+        }
+
+        if ($cv_review->result == "") {
+            $this->review_state = 2;
+            return;
+        }
+
+        $this->review_state = 3;
     }
 
     public function render()
