@@ -64,6 +64,14 @@ class UserStatistic extends Model
 
     public function archetype()
     {
+        if ($this->level >= 10) {
+            if (Archetype::isArchetypeBase($this->archetype_id)) {
+                $archetype = Archetype::getEvolution($this->archetype_id);
+                $this->archetype_id = $archetype->id;
+                $this->save();
+            }
+        }
+
         return $this->belongsTo(Archetype::class);
     }
 
@@ -143,5 +151,23 @@ class UserStatistic extends Model
         $expNeeded = $this->expNeeded($level);
 
         return $exp - $expNeeded;
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        self::updated(function ($model) {
+            // check if current level >= 50, if so evolve to next archetype
+            if ($model->level >= 10) {
+                if (!$model->archetype->is_base) {
+                    return;
+                }
+
+                $archetype = Archetype::getEvolution($model->archetype->name);
+                $model->archetype_id = $archetype->id;
+                $model->save();
+            }
+        });
     }
 }
