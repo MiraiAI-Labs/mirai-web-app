@@ -26,6 +26,7 @@ class Archetype extends Model
             "The Shadowbroker",
             "The Artist",
             "The Conductor",
+            "The Travelling Wanderer",
         ]);
     }
 
@@ -45,6 +46,7 @@ class Archetype extends Model
             "The Shadowbroker",
             "The Artist",
             "The Conductor",
+            "The Travelling Wanderer",
         ]);
     }
 

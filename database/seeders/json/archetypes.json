@@ -1,37 +1,37 @@
 [
     {
         "name": "The Architect",
-        "description": "",
+        "description": "Ia yang membangun gagasan menjadi sesuatu yang nyata. Ia ahli dalam merancang produk secara konkret.",
         "image": "images/archetypes/The Architect.png"
     },
     {
         "name": "The Ruler",
-        "description": "",
+        "description": "Seorang pemimpin handal, ia fokus pada hasil akhir dan memastikan bahwa semua berjalan sesuai rencana.",
         "image": "images/archetypes/The Ruler.png"
     },
     {
         "name": "The Innovator",
-        "description": "",
+        "description": "Pemikir kreatif yang selalu mencari solusi baru dan mendorong batasan teknologi.",
         "image": "images/archetypes/The Innovator.png"
     },
     {
         "name": "The Philosopher",
-        "description": "",
+        "description": "Dirinya selalu memiliki ide revolusioner. Ia adalah pencari kebenaran, ilmunya yang tak terbatas membawa era baru.",
         "image": "images/archetypes/The Philosopher.png"
     },
     {
         "name": "The Shadowbroker",
-        "description": "",
+        "description": "Ahli dalam menemukan celah dan kelemahan sistem. Ia selalu memiliki keinginan untuk merevolusi sistem.",
         "image": "images/archetypes/The Shadowbroker.png"
     },
     {
         "name": "The Artist",
-        "description": "",
+        "description": "Kreator yang mengutamakan keindahan dan estetika. Selalu berpikir kreatif dan menyukai inovasi visual.",
         "image": "images/archetypes/The Artist.png"
     },
     {
         "name": "The Conductor",
-        "description": "",
+        "description": "Ia memastikan komunikasi dan kolaborasi dalam tim berjalan lancar.",
         "image": "images/archetypes/The Conductor.png"
     },
     {
@@ -71,7 +71,7 @@
     },
     {
         "name": "The Travelling Wanderer",
-        "description": "",
+        "description": "Sang pencari jati diri. Tak kenal lelah dan tak kenal menyerah, ia selalu mencari tahu apa kekuatan miliknya.",
         "image": "images/archetypes/The Travelling Wanderer.png"
     }
 ]
