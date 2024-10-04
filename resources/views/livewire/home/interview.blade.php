@@ -8,12 +8,13 @@
     </section>
     <h2 class="text-2xl font-bold">Practice Interview</h2>
     <section class="grid grid-cols-1 md:grid-cols-2 gap-4 h-4/5 mt-4 relative" x-data="interview">
-        <div class="shadow bg-base-100 rounded-xl flex justify-center items-center min-h-80 col-span-2" x-show="!started">
-            <button class="btn btn-lg btn-neutral" x-on:click="start()">Mulai Interview</button>
+        <div class="shadow bg-base-100 rounded-xl flex flex-col gap-4 justify-center items-center min-h-80 col-span-2" x-cloak x-show="!started">
+            <h1 class="text-4xl font-bold text-orange-gradient">Practice Makes Perfect!</h1>
+            <button class="btn btn-lg btn-orange-gradient normal-case text-black" x-on:click="start()">Ayo Mulai Latihan</button>
         </div>
-        <div class="shadow bg-base-100 rounded-xl flex justify-center items-center min-h-80 relative" x-show="started">
+        <div class="shadow bg-base-100 rounded-xl flex justify-center items-center min-h-80 relative" x-cloak x-show="started">
             <video id="camera" class="aspect-video w-full flipped" autoplay></video>
-            <canvas id="canvas" width="480px" height="480px" x-show="mediapipeDebug"></canvas>
+            <canvas id="canvas" width="480px" height="480px" x-cloak x-show="mediapipeDebug"></canvas>
             <footer class="flex text-justify items-center absolute bottom-3">
 
                 <select id="chooseCamera" class="ml-4 select select-bordered w-full max-w-64 md:max-w-36 lg:max-w-56 text-ellipsis" wire:model="cameraId">
@@ -33,7 +34,7 @@
                 </select>
             </footer>
         </div>
-        <div class="shadow bg-base-100 rounded-xl min-h-80" x-show="started">
+        <div class="shadow bg-base-100 rounded-xl min-h-80" x-cloak x-show="started">
             <header class="p-4 text-xl font-semibold text-center">Chat</header>
             <main id="chat" class="px-4 pb-4 text-justify overflow-y-scroll max-h-[300px]">
                 @foreach($chats as $chat)
@@ -46,7 +47,7 @@
                     @endif
                     <br />
                 @endforeach
-                <div class="animate-pulse flex items-start gap-2.5 justify-start" x-show="loading">
+                <div class="animate-pulse flex items-start gap-2.5 justify-start" x-cloak x-show="loading">
                     <div class="bg-gray-100 flex flex-col w-full max-w-[320px] leading-1.5 p-4 border-gray-200 rounded-e-xl rounded-es-xl dark:bg-gray-700">
                        <div class="flex items-center space-x-2 rtl:space-x-reverse">
                           <span class="bg-gray-300 w-24 h-4 rounded-xl"></span>
@@ -56,7 +57,7 @@
                 </div>
             </main>
         </div>
-        <div x-show="started" class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div x-cloak x-show="started" class="col-span-1 md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="shadow text-white rounded-xl p-6" :class="tegap ? 'btn-success' : 'btn-error'" x-text="!tegap ? 'Tegapkan Badan!' : 'Badan sudah tegap' "></div>
             <div class="shadow text-white rounded-xl p-6" :class="facingCamera ? 'btn-success' : 'btn-error'" x-text="!facingCamera ? 'Hadap Kamera!' : 'Sudah menghadap kamera' "></div>
             <div class="shadow text-white rounded-xl p-6" :class="shoulderShown ? 'btn-success' : 'btn-error'" x-text="!shoulderShown ? 'Posisikan bahu terlihat!' : 'Bahu sudah terlihat' "></div>
@@ -84,6 +85,7 @@
                 shoulderShown: false,
                 mediaRecorder: null,
                 tts_service: null,
+                intonationInterval: null,
                 start() {
                     let t = this;
                     this.started = true;
@@ -298,11 +300,13 @@
                 handle(stream, callback = null) {
                     this.mediaRecorder = new MediaRecorder(stream);
 
-                    const audioChunks = [];
+                    let audioChunks = [];
+                    let intonationChunks = [];
 
                     this.mediaRecorder.ondataavailable = (e) => {
                         if (e.data.size > 0) {
                             audioChunks.push(e.data);
+                            intonationChunks.push(e.data);
                         }
                     };
 
@@ -320,6 +324,18 @@
                             this.send(audioBlob);
                     };
 
+                    this.mediaRecorder.onstart = () => {
+                        console.log('Recording started');
+                        this.intonationInterval = setInterval(() => {
+                            console.log('Sending intonation');
+                            console.log(audioChunks);
+                            console.log(intonationChunks);
+                            const intonationBlob = new Blob(intonationChunks, { type: 'audio/wav' });
+                            intonationChunks = [];
+                            this.intonationSend(intonationBlob);
+                        }, 1000);
+                    };
+
                     this.mediaRecorder.start();
                 },
                 stop() {
@@ -328,9 +344,18 @@
                         this.mediaRecorder.stop();
                         this.mediaRecorder = null;
                     }
+
+                    if(this.intonationRecorder)
+                    {
+                        this.intonationRecorder.stop();
+                        clearInterval(this.intonationInterval);
+                    }
                 },
                 send(blob) {
                     @this.$upload('audioBlob', blob);
+                },
+                intonationSend(blob) {
+                    @this.$upload('intonationBlob', blob);
                 }
             }))
         })

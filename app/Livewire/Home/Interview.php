@@ -24,6 +24,7 @@ class Interview extends BaseController
     public $microphones = [];
     public $microphoneId = 0;
     public $audioBlob = null;
+    public $intonationBlob = null;
 
     public $started = false;
     public $muted = true;
@@ -31,6 +32,7 @@ class Interview extends BaseController
     public $loading = false;
 
     public $api_url = "";
+    public $api2_url = "";
 
     public $sessionIdentifier = null;
     public $positionName = "";
@@ -41,6 +43,7 @@ class Interview extends BaseController
     public function mount()
     {
         $this->api_url = env("INTERVIEW_API_URL", "http://localhost:8000");
+        $this->api2_url = env("INTERVIEW_API_URL", "http://localhost:8001");
 
         $user = User::find(auth()->id());
 
@@ -203,6 +206,22 @@ class Interview extends BaseController
                 }
             }
         }
+    }
+
+    public function updateIntonationBlob()
+    {
+        $this->dispatch('log', 'Intonation blob updated');
+        $context = ['http' => ['method' => 'GET'], 'ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'allow_self_signed' => true]];
+        $context = stream_context_create($context);
+
+        $response = Http::withOptions(['verify' => false])->attach('file', file_get_contents($this->intonationBlob->getRealPath(), false, $context), 'intonation.wav')
+            ->post("$this->api2_url/submit_audio");
+
+        unlink($this->intonationBlob->getRealPath());
+
+        $response = $response->json();
+
+        $this->dispatch('log', $response);
     }
 
     public function render()
