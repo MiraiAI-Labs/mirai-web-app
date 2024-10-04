@@ -8,6 +8,7 @@ use App\Livewire\User\Password;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Home\Quiz;
 use App\Http\Middleware\PositionChosen;
+use App\Livewire\BusinessOwner\BusinessHome;
 use App\Livewire\Home\Courses;
 use App\Livewire\Home\Roadmap;
 use App\Livewire\Home\Welcome;
@@ -15,27 +16,35 @@ use App\Livewire\Home\Welcome;
 Route::get('/', Welcome::class)->name('welcome');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/home', Home::class)
-        ->name('home');
 
-    Route::middleware([PositionChosen::class])->group(function () {
-        Route::get('/cv-analysis', CurriculumVitae::class)
-            ->name('cv');
+    Route::group(['middleware' => ['auth', 'role:user']], function () {
+        Route::get('/home', Home::class)
+            ->name('home');
 
-        Route::get('/interview', Interview::class)
-            ->name('interview');
+        Route::middleware([PositionChosen::class])->group(function () {
+            Route::get('/cv-analysis', CurriculumVitae::class)
+                ->name('cv');
 
-        Route::get('/jobs', Jobs::class)
-            ->name('jobs');
+            Route::get('/interview', Interview::class)
+                ->name('interview');
 
-        Route::get('/quiz', Quiz::class)
-            ->name('quiz');
+            Route::get('/jobs', Jobs::class)
+                ->name('jobs');
 
-        Route::get('/roadmap', Roadmap::class)
-            ->name('roadmap');
+            Route::get('/quiz', Quiz::class)
+                ->name('quiz');
 
-        Route::get('/courses', Courses::class)
-            ->name('courses');
+            Route::get('/roadmap', Roadmap::class)
+                ->name('roadmap');
+
+            Route::get('/courses', Courses::class)
+                ->name('courses');
+        });
+    });
+
+    Route::group(['middleware' => ['auth', 'role:business-owner']], function () {
+        Route::get('/business-home', BusinessHome::class)
+            ->name('business-home');
     });
 
     Route::prefix('user')->group(function () {

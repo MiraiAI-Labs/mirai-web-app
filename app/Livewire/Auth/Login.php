@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -30,6 +31,12 @@ class Login extends Component
             $this->addError('email', trans('auth.failed'));
 
             return;
+        }
+
+        $user_roles = Auth::user()->roles->pluck('name')->toArray();
+
+        if (in_array('business-owner', $user_roles)) {
+            return redirect()->intended(route('business-home'));
         }
 
         return redirect()->intended(route('home'));

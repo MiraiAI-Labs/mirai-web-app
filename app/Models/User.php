@@ -74,12 +74,17 @@ class User extends Authenticatable
 
     public function userStatistic()
     {
-        if (!UserStatistic::where('user_id', $this->id)->exists()) {
-            $archetype = Archetype::where('name', 'The Travelling Wanderer')->first();
-            $userStatistic = new UserStatistic();
-            $userStatistic->user_id = $this->id;
-            $userStatistic->archetype_id = $archetype->id;
-            $userStatistic->save();
+        try {
+            if (!UserStatistic::where('user_id', $this->id)->exists()) {
+                $archetype = Archetype::where('name', 'The Travelling Wanderer')->first();
+                $userStatistic = new UserStatistic();
+                $userStatistic->user_id = $this->id;
+                $userStatistic->archetype_id = $archetype->id;
+                $userStatistic->save();
+            }
+        } catch (\Exception $e) {
+            // dd($this->id);
+            // return null;
         }
 
         return $this->hasOne(UserStatistic::class);
@@ -99,5 +104,12 @@ class User extends Authenticatable
         $user = User::create($attributes);
 
         return ($user) ? $user : null;
+    }
+
+    public static function getByHighestExp($limit = 10)
+    {
+        return User::all()->sortByDesc(function ($user) {
+            return $user->userStatistic->exp;
+        })->take($limit);
     }
 }

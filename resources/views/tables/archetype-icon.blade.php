@@ -1,0 +1,1 @@
+<img src="{{ asset($value) }}" alt="" class="my-6 mx-auto rounded-full w-16 border-white border-4">

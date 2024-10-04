@@ -115,6 +115,12 @@
     -webkit-text-fill-color: transparent;
 }
 
+.text-blue-gradient {
+    background: linear-gradient(to right top, #2cb0f1, #20a4e9, #1597e0, #0c8bd7, #097fce);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /**
  * Here you would add any custom utilities you need that don't come out of the
  * box with Tailwind.
@@ -479,4 +485,8 @@ video.flipped {
 
 .class-gradient.light {
     background: linear-gradient(90deg, #0084FF 0%, #000000 100%);
+}
+
+[x-cloak] {
+    display: none;
 }
