@@ -24,8 +24,17 @@
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgb(255, 99, 132)'
                 }, {
-                    label: 'Performa {{ auth()->user()->position->name }}',
-                    data: [5, 6, 7, 8, 9, 10, 8, 7],
+                    label: 'Performa Target {{ auth()->user()->position->name }}',
+                    data: [
+                        {{ $target['cognitive'] }},
+                        {{ $target['scholastic'] }},
+                        {{ $target['technical'] }},
+                        {{ $target['interpersonal'] }},
+                        {{ $target['eq'] }},
+                        {{ $target['creativity'] }},
+                        {{ $target['adaptability'] }},
+                        {{ $target['motivation'] }}
+                    ],
                     fill: true,
                     backgroundColor: 'rgba(255, 144, 0, 0.7)',
                     pointBorderColor: '#fff',
