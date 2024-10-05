@@ -115,7 +115,7 @@ class CurriculumVitae extends BaseController
 
         if (!$cv_review) {
             $this->review = null;
-            $this->review_state = -1;
+            $this->review_state = 0;
             return;
         }
 
