@@ -41,6 +41,10 @@ class Home extends BaseController
             return;
         }
 
+        if (!$this->analysis_json) {
+            return $this->toastError('Analysis not found');
+        }
+
         $api = env('INTERVIEW_API_URL', 'http://localhost:8000');
         $position = User::find(auth()->user()->id)->position->name;
         $body = $this->analysis_json;
