@@ -6,6 +6,8 @@ use App\Livewire\BaseController;
 use App\Models\JobsAnalysis;
 use App\Models\User;
 use App\Traits\ToastDispatchable;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Session;
 
 class Home extends BaseController
 {
@@ -24,9 +26,35 @@ class Home extends BaseController
 
     public $analysis_json;
 
+    public $advice = null;
+
     public function mount()
     {
         $this->fetchAnalysis();
+
+        $this->advice = Session::get('advice') ?? null;
+    }
+
+    public function fetchAdvice()
+    {
+        if ($this->advice) {
+            return;
+        }
+
+        $api = env('INTERVIEW_API_URL', 'http://localhost:8000');
+        $position = User::find(auth()->user()->id)->position->name;
+        $body = $this->analysis_json;
+        $query = [
+            'job_title' => $position
+        ];
+        $stringifiedQuery = http_build_query($query);
+        $response = Http::post($api . "/jobseeker_advice?" . $stringifiedQuery, $body);
+
+        $this->advice = $response->json()['advice'];
+
+        Session::put('advice', $this->advice);
+
+        $this->dispatch('refreshComponent');
     }
 
     public function reload()

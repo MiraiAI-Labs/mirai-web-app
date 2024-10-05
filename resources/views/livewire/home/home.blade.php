@@ -28,7 +28,7 @@
                 @if($this->analysis_json)
                 
                 <div x-cloak x-show="fetched" class="w-full h-full gap-4 flex flex-col">
-                    <div class="col-span-1 w-full h-full order-2" wire:ignore>
+                    <div class="col-span-1 w-full h-full order-3" wire:ignore>
                         <div id="indicators-carousel" class="relative w-full h-96" data-carousel="static" wire:ignore>
                             <!-- Carousel wrapper -->
                             <div class="relative overflow-hidden rounded-lg h-full">
@@ -162,6 +162,11 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="bg-base-100 rounded-xl flex flex-col justify-center items-center p-4 gap-2 w-full order-2" x-cloak x-show="advice != null">
+                        <h1 class="text-xl font-bold text-center">Advice Insight Berdasarkan Visualisasi Data</h1>
+                        <p x-text="advice"></p>
+                    </div>
                 </div>
                 @endif
             </section>
@@ -176,7 +181,7 @@
 @section('scripts')
     @vite('resources/js/chart.js')
     <script>
-        document.addEventListener('alpine:init', () => {      
+        document.addEventListener('alpine:init', () => {
             Alpine.data('job_analysis', () => ({
                 fetched: @entangle('fetched'),
                 fetching: @entangle('fetching'),
@@ -188,10 +193,15 @@
 
             Alpine.data('archetype_article', () => ({
                 article: false,
+                advice: @entangle('advice'),
                 toggleArticle() {
                     this.article = !this.article;
                 }
             }));
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            @this.fetchAdvice();
         });
     </script>
 @endsection
