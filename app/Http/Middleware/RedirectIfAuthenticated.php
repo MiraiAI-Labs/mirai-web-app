@@ -21,7 +21,13 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(route('home'));
+                $user_roles = Auth::user()->roles->pluck('name')->toArray();
+
+                if (in_array('business-owner', $user_roles)) {
+                    return redirect()->route('business-home');
+                } else {
+                    return redirect()->route('home');
+                }
             }
         }
 

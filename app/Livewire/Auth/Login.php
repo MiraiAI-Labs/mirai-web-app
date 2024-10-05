@@ -36,10 +36,10 @@ class Login extends Component
         $user_roles = Auth::user()->roles->pluck('name')->toArray();
 
         if (in_array('business-owner', $user_roles)) {
-            return redirect()->intended(route('business-home'));
+            return redirect()->route('business-home');
+        } else {
+            return redirect()->route('home');
         }
-
-        return redirect()->intended(route('home'));
     }
 
     public function render()
