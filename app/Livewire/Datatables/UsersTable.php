@@ -19,7 +19,7 @@ class UsersTable extends LivewireDatatable
     public function getColumns(): array|Model
     {
         return [
-            Column::name('userStatistic.archetype.image')->view('tables.archetype-icon')
+            Column::name('userStatistic.archetype.id')->view('tables.archetype-icon')
                 ->label('Archetype')
                 ->hideable(),
 
@@ -29,14 +29,53 @@ class UsersTable extends LivewireDatatable
                 ->searchable()
                 ->hideable(),
 
-            // Column::name('userStatistic.average')
-            //     ->label('Overall')
-            //     ->sortable()
-            //     ->hideable(),
+            Column::name('userStatistic.cognitive')
+                ->label('Kognitif')
+                ->sortable()
+                ->hideable(),
+
+            Column::name('userStatistic.motivation')
+                ->label('Motivasi')
+                ->sortable()
+                ->hideable(),
+
+            Column::name('userStatistic.adaptability')
+                ->label('Adaptabilitas')
+                ->sortable()
+                ->hideable(),
+
+            Column::name('userStatistic.creativity')
+                ->label('Kreativitas')
+                ->sortable()
+                ->hideable(),
+
+            Column::name('userStatistic.eq')
+                ->label('EQ')
+                ->sortable()
+                ->hideable(),
+
+            Column::name('userStatistic.interpersonal')
+                ->label('Interpersonal')
+                ->sortable()
+                ->hideable(),
+
+            Column::name('userStatistic.technical')
+                ->label('Teknikal')
+                ->sortable()
+                ->hideable(),
+
+            Column::name('userStatistic.scholastic')
+                ->label('Skolastik')
+                ->sortable()
+                ->hideable(),
 
             Column::name('userStatistic.exp')
                 ->label('Exp')
                 ->sortable()
+                ->hideable(),
+
+            Column::name('id')->view('tables.hire')
+                ->label('Hubungi')
                 ->hideable(),
         ];
     }

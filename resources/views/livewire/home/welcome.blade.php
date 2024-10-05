@@ -29,7 +29,7 @@
                     $user_roles = Auth::user()->roles->pluck('name')->toArray();
 
                     if (in_array('business-owner', $user_roles)) {
-                        $home = route('home-business');
+                        $home = route('business-home');
                     } else {
                         $home = route('home');
                     }    

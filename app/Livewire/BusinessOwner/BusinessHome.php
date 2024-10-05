@@ -15,8 +15,6 @@ class BusinessHome extends BaseController
     public function mount()
     {
         $this->veterans = User::getByHighestExp(5);
-        // find user with highest exps
-
     }
 
     public function render()
