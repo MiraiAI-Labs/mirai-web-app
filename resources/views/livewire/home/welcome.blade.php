@@ -24,6 +24,16 @@
 
         <div class="ml-auto mr-4">
             @auth
+                @php
+                    $home = null;
+                    $user_roles = Auth::user()->roles->pluck('name')->toArray();
+
+                    if (in_array('business-owner', $user_roles)) {
+                        $home = route('home-business');
+                    } else {
+                        $home = route('home');
+                    }    
+                @endphp
                 <a href="{{ route('home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-indigo-500">Home</a>
                 <a href="{{ route('logout') }}" class="btn border-0 bg-gray-100 ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-800 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-indigo-500">Log out</a>
             @else

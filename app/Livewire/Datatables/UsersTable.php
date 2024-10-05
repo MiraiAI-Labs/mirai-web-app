@@ -29,6 +29,11 @@ class UsersTable extends LivewireDatatable
                 ->searchable()
                 ->hideable(),
 
+            // Column::name('userStatistic.average')
+            //     ->label('Overall')
+            //     ->sortable()
+            //     ->hideable(),
+
             Column::name('userStatistic.exp')
                 ->label('Exp')
                 ->sortable()

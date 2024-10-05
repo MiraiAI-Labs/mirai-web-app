@@ -52,7 +52,8 @@ class Courses extends BaseController
         if ($this->count == 0) {
             $this->count = $response['count'];
 
-            $this->maxPage = floor($this->count / $this->page_size);
+            // $this->maxPage = floor($this->count / $this->page_size);
+            $this->maxPage = 5;
         }
 
         $this->courses = $response['results'];

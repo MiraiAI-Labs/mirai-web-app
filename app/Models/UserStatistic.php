@@ -33,6 +33,7 @@ class UserStatistic extends Model
         'exp_to_next_level',
         'current_exp_on_current_level',
         'performance',
+        'average',
     ];
 
     private function exponentialMovingAverage($current, $previous, $alpha = 0.25)
@@ -113,6 +114,22 @@ class UserStatistic extends Model
         $exp = $this->exp;
 
         return $this->currentExpOnCurrentLevel($exp);
+    }
+
+    public function getAverageAttribute()
+    {
+        $sum = 0;
+
+        $sum += $this->cognitive;
+        $sum += $this->motivation;
+        $sum += $this->adaptability;
+        $sum += $this->creativity;
+        $sum += $this->eq;
+        $sum += $this->interpersonal;
+        $sum += $this->technical;
+        $sum += $this->scholastic;
+
+        return $sum / 8;
     }
 
     private function expNeeded($level)
