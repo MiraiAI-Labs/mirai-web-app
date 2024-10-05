@@ -14,6 +14,7 @@ class Home extends BaseController
     protected $listeners = [
         'refresh' => 'fetchAnalysis',
         'refreshComponent' => '$refresh',
+        'reload' => 'reload',
     ];
 
     public $fetched = false;
@@ -26,6 +27,11 @@ class Home extends BaseController
     public function mount()
     {
         $this->fetchAnalysis();
+    }
+
+    public function reload()
+    {
+        redirect()->route('home');
     }
 
     public function fetchAnalysis()

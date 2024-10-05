@@ -9,7 +9,8 @@
     <h2 class="text-2xl font-bold">Recommended Courses</h2>
     <section class="mt-4 flex flex-col">
         <div class="bg-base-100 rounded-xl min-h-80 p-4 flex">
-            <div class="overflow-y-auto w-full">
+
+            <div class="overflow-y-auto w-full" wire:loading.remove wire:target="changePage">
                 <ul tabindex="0" class="bg-base-100 rounded-box z-[1] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
                     @foreach($courses as $course)
                         <a href="https://www.udemy.com{{ $course['url'] }}" class="normal-case shadow btn w-full text-left rounded-xl min-h-72 grid-rows-2 p-0 overflow-hidden">
@@ -23,6 +24,8 @@
                     @endforeach
                 </ul>
             </div>
+
+            <div class="m-auto loading loading-spinner w-16" wire:loading wire:target="changePage"></div>
         </div>
         <div class="join mx-auto mt-4">
             @if($page !== 1)

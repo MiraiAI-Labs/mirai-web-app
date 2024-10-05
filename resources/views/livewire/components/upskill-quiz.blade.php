@@ -134,8 +134,8 @@
                 },
                 startTimer() {
                     let t = this;
-                    // const expiry = new Date().getTime() + 15 * 60 * 1000;
-                    const expiry = new Date().getTime() + 10 * 1000;
+                    const expiry = new Date().getTime() + 15 * 60 * 1000;
+                    // const expiry = new Date().getTime() + 10 * 1000;
                     let timer = setInterval(() => {
                         const now = new Date().getTime();
                         const distance = expiry - now;

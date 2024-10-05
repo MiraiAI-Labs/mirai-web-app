@@ -1,6 +1,6 @@
 <div class="relative overflow-hidden rounded-lg flex flex-col shadow bg-base-100 p-2 gap-1 {{ $class ?? '' }}">
-    <h1 class="text-xl font-bold text-white text-center">Performa</h1>
-    <canvas id="{{ $id }}" class="my-auto"></canvas>
+    <h1 class="text-xl font-bold text-center">Performa</h1>
+    <canvas id="{{ $id }}" class="my-auto max-h-64"></canvas>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -47,6 +47,14 @@
                 type: 'radar',
                 data: data,
                 options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                fontSize: 14,
+                                color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'white' : 'black',
+                            }
+                        }
+                    },
                     elements: {
                         line: {
                             borderWidth: 3
@@ -57,10 +65,10 @@
                             suggestedMin: 0,
                             suggestedMax: 10,
                             angleLines: {
-                                color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'gray' : 'black'
+                                color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'gray' : 'gray'
                             },
                             grid: {
-                                color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'gray' : 'black'
+                                color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'gray' : 'gray'
                             },
                             pointLabels: { // https://www.chartjs.org/docs/latest/axes/radial/#point-labels
                                 color: (document.getElementsByTagName('html')[0].dataset.theme === 'dark') ? 'white' : 'black'

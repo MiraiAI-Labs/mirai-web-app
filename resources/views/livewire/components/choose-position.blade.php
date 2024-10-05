@@ -8,7 +8,7 @@
                 this.text = target.innerText;
                 @this.set('selectedPosition', this.selected);
                 @this.set('textPosition', this.text);
-                @this.dispatch('refresh')
+                @this.dispatch('reload')
             },
             pick(id, name) {
                 if(@this.get('landingPage'))
@@ -17,7 +17,7 @@
                 this.text = name;
                 @this.set('selectedPosition', this.selected);
                 @this.set('textPosition', this.text);
-                @this.dispatch('refresh')
+                @this.dispatch('reload')
             }
         }">
     <div class="dropdown w-full">

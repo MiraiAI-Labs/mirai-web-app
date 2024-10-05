@@ -37,25 +37,32 @@
             <div class="w-1/2 self-start grid">
                 <div class="shadow bg-base-100 rounded-xl w-full p-6">
                     <!-- Title -->
-                    <h2 class="text-white text-xl font-semibold mb-2 text-center">Overall Score</h2>
+                    <h2 class="text-xl font-semibold mb-2 text-center">Overall Score</h2>
                     <div class="text-yellow-400 text-6xl font-bold text-center">{{ (int) ((($json_review['skor_peluang_diterima'] ?? 0) + ($json_review['skor_peluang_unggul_dari_kandidat_lain'] ?? 0) + ($json_review['skor_penulisan_dan_bahasa_cv'] ?? 0)) / 3) }}</div>
                     
                     <!-- Scores Section -->
                     <div class="grid gap-2 grid-cols-3 mt-4">
                         <div class="grid grid-rows-2">
-                            <span class="text-white text-center my-auto text-xs">Peluang Diterima</span>
+                            <span class="text-center my-auto text-xs">Peluang Diterima</span>
                             <span class="text-yellow-400 text-4xl font-bold text-center">{{ $json_review['skor_peluang_diterima'] ?? '' }}</span>
                         </div>
                         
                         <div class="grid grid-rows-2">
-                            <span class="text-white text-center my-auto text-xs">Keunikan</span>
+                            <span class="text-center my-auto text-xs">Keunikan</span>
                             <span class="text-yellow-400 text-4xl font-bold text-center">{{ $json_review['skor_peluang_unggul_dari_kandidat_lain'] ?? '' }}</span>
                         </div>
 
                         <div class="grid grid-rows-2">
-                            <span class="text-white text-center my-auto text-xs">Gaya Penulisan</span>
+                            <span class="text-center my-auto text-xs">Gaya Penulisan</span>
                             <span class="text-yellow-400 text-4xl font-bold text-center">{{ $json_review['skor_penulisan_dan_bahasa_cv'] ?? '' }}</span>
                         </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 shadow bg-base-100 rounded-xl w-full p-6">
+                    <header class="text-xl font-semibold text-center">Kesimpulan</header>
+                    <div class="mt-6 max-h-64 overflow-y-auto">
+                        {{ Illuminate\Mail\Markdown::parse($json_review['kesimpulan'] ?? '') }}
                     </div>
                 </div>
 
@@ -68,24 +75,18 @@
                     <span class="loading loading-spinner" wire:loading wire:target="reupload"></span>
                 </button>
             </div>
-            <div class="w-full flex flex-col gap-4 text-white">
+            <div class="w-full flex flex-col gap-4">
                 <div class="shadow bg-base-100 rounded-xl w-full p-6">
                     <header class="text-xl font-semibold text-center">Peningkatan yang dapat dilakukan</header>
-                    <p class="mt-6">
+                    <div class="mt-6 max-h-64 overflow-y-auto">
                         {{ Illuminate\Mail\Markdown::parse($json_review['peningkatan_yang_dapat_dilakukan'] ?? '') }}
-                    </p>
+                    </div>
                 </div>
                 <div class="shadow bg-base-100 rounded-xl w-full p-6">
                     <header class="text-xl font-semibold text-center">Hal bagus yang dipertahankan</header>
-                    <p class="mt-6">
+                    <div class="mt-6 max-h-64 overflow-y-auto">
                         {{ Illuminate\Mail\Markdown::parse($json_review['hal_bagus_yang_dipertahankan'] ?? '') }}
-                    </p>
-                </div>
-                <div class="shadow bg-base-100 rounded-xl w-full p-6">
-                    <header class="text-xl font-semibold text-center">Kesimpulan</header>
-                    <p class="mt-6">
-                        {{ Illuminate\Mail\Markdown::parse($json_review['kesimpulan'] ?? '') }}
-                    </p>
+                    </div>
                 </div>
             </div>
         </section>

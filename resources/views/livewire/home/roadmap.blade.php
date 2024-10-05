@@ -26,17 +26,17 @@
                         <div class="absolute left-0 top-2 h-2 w-2 rounded-full border border-sky-300 bg-zinc-950"></div>
                         <label class="collapse collapse-arrow bg-base-200">
                             <input type="radio" name="roadmap" {{ $loop->first ? 'checked="checked"' : '' }}>
-                            <div class="collapse-title text-xl font-medium text-sky-300">{{ $item['title'] ?? '' }}</div>
+                            <div class="collapse-title text-xl font-medium text-sky-500">{{ $item['title'] ?? '' }}</div>
                             <div class="collapse-content flex flex-col">
-                                <h3 class="mt-2 text-sm/6 text-white">{{ Illuminate\Mail\Markdown::parse($item['description'] ?? '') }}</h3>
+                                <h3 class="mt-2 text-sm/6">{{ Illuminate\Mail\Markdown::parse($item['description'] ?? '') }}</h3>
                                 @if($item['links'] !== [])
                                     <p class="mt-2 text-sm/6 text-zinc-400">Resources</p>
                                     <div class="flex flex-col gap-1">
                                         @foreach($item['links'] as $resource)
                                             <span class="flex flex-row items-center gap-2">
                                                 <i class="fa-solid fa-angle-right"></i>
-                                                <a href="{{ $resource['url'] }}" class="flex flex-row items-center text-sky-300 hover:text-sky-200">{{ $resource['title'] }} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-4 h-4 ml-1 flex-shrink-0"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
-                                                <span class="ml-2 text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">{{ $resource['type'] }}</span>
+                                                <a href="{{ $resource['url'] }}" class="flex flex-row items-center text-sky-500 hover:text-sky-300">{{ $resource['title'] }} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link w-4 h-4 ml-1 flex-shrink-0"><path d="M15 3h6v6"></path><path d="M10 14 21 3"></path><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg></a>
+                                                <span class="ml-2 text-xs text-gray-500 bg-gray-200 px-2 py-1 rounded">{{ $resource['type'] }}</span>
                                             </span>
                                         @endforeach
                                     </div>
@@ -68,8 +68,11 @@
             <p class="py-4">{{ $quiz['question'] ?? '' }}</p>
             <div class="grid grid-rows-4 gap-4">
                 @foreach($quiz['choices'] ?? [] as $no => $option)
+                    @php
+                        $isRightAnswer = $quiz['answer'] == md5($quiz['choices'][$no] . base64_decode(substr(env('APP_KEY'), 7)));
+                    @endphp
                     <label class="label w-full !h-auto cursor-pointer p-4 rounded-xl input input-bordered input-checkbox gap-2">
-                        <span class="label-text p-2 text-sm font-light">{{ $option ?? '' }}</span>
+                        <span class="label-text p-2 text-sm font-light">{{ $option ?? '' }}{{ $isRightAnswer ? '.' : '' }}</span>
                         <input type="radio" name="answer-{{ $quiz['id'] }}" class="radio" wire:click="choseAnswer('{{ $loop->index }}')" value="{{ $no }}" />
                     </label>
                 @endforeach

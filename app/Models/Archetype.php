@@ -96,4 +96,15 @@ class Archetype extends Model
 
         return $filtered;
     }
+
+    public static function getImageUrl($archetype_name)
+    {
+        $archetype = self::where('name', $archetype_name)->first();
+
+        if (!$archetype) {
+            return null;
+        }
+
+        return asset($archetype->image);
+    }
 }

@@ -31,7 +31,7 @@ class UpskillQuiz extends BaseController
     public int $totalQuestions = 0;
     public bool $evaluated = false;
 
-    public int $questionPerParameter = 1;
+    public int $questionPerParameter = 3;
 
     public $api_url = "";
 

@@ -1,10 +1,13 @@
-<div class="w-full h-full">
-    <button class="btn btn-neutral" @click="toggleArticle"><i class="fa-solid fa-angle-left"></i> Back</button>
+<div class="w-full h-full" style="scroll-behavior: smooth;">
     <section class="flex flex-row my-4">
         <div class="sm:w-8/12 flex flex-col justify-center lg:pr-6">
             <h1 class="text-2xl md:text-3xl lg:text-4xl xl:text-6xl font-bold text-left !bg-clip-text text-transparent bw-gradient" :class="theme == 'dark' ? 'dark' : 'light'">Ketahui dirimu, ketahui lawanmu, dan jadilah tak terkalahkan.</h1>
             <h2 class="text-sm md:text-xl text-black dark:text-white my-4 lg:my-12">Kami percaya bahwa dalam dunia industri Teknologi Informasi sekalipun, setiap persona memiliki ciri khas yang dapat diklasifikasikan berdasarkan sebuah sistem dikotomi. </h2>
-            <button class="btn btn-orange-gradient normal-case text-black self-start">Pelajari Arketipe Saya</button>
+            
+            <div class="flex gap-4">
+                <button class="btn btn-neutral" @click="toggleArticle"><i class="fa-solid fa-angle-left"></i> Back</button>
+                <a href="#archetypes" class="btn btn-orange-gradient normal-case text-black self-start">Pelajari Arketipe Saya</a>
+            </div>
         </div>
         <div class="sm:w-4/12 lg:pl-6 hidden sm:block">
             <img src="{{ asset('images/hero-archetype.png') }}" alt="Hero Archetype">
@@ -30,7 +33,7 @@
             <img src="{{ asset('images/diagram-archetype.png') }}" alt="Diagram Archetype" class="m-auto">
         </div>
     </section>
-    <section>
+    <section id="archetypes">
         <h1 class="text-4xl font-bold !bg-clip-text text-transparent bw-gradient text-center my-4" :class="theme == 'dark' ? 'dark' : 'light'">Manakah Arketipemu ?</h1>
         @php
             $archetypes = App\Models\Archetype::getBaseArchetypes();
@@ -38,7 +41,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-2 gap-6 py-4 px-12">
             @foreach($archetypes as $archetype)
-            <div class="group btn normal-case relative w-full h-0 pb-[100%] bg-cover bg-center rounded-xl border-4 border-blue-500 hover:border-blue-400 hover:shadow-[0_0_20px_-5px_rgba(63,131,248,0.9)] transition-all duration-300 ease-in-out shadow-lg" style="background-image: url('{{ asset($archetype->image) }}');">
+            <div @if($archetype->name != "The Travelling Wanderer") wire:click="getArticle('{{$archetype->name}}')" @endif class="group btn normal-case relative w-full h-0 pb-[100%] bg-cover bg-center rounded-xl border-4 border-blue-500 hover:border-blue-400 hover:shadow-[0_0_20px_-5px_rgba(63,131,248,0.9)] transition-all duration-300 ease-in-out shadow-lg" style="background-image: url('{{ asset($archetype->image) }}');">
          
                 <!-- Overlay effect -->
                 <div class="group absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent rounded-xl"></div>
@@ -54,4 +57,44 @@
             @endforeach
         </div>
     </section>
+
+    <input type="checkbox" id="archetypeModal" class="modal-toggle" />
+    <div class="modal" role="dialog">
+        <div class="modal-box border-4 border-blue-500 relative">
+            <label for="archetypeModal" class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
+
+            <div>
+                <h1 class="text-4xl font-bold !bg-clip-text text-transparent class-gradient text-center my-4" :class="theme == 'dark' ? 'dark' : 'light'">{{ $modal['title'] ?? '' }}</h1>
+                <p>
+                    {{ $modal['content'] ?? '' }}
+                </p>
+                <br>
+                <p>
+                    Secara tipikal, karir arketipe ini dapat meliputi: <b>{{ $modal['jobs'] ?? '' }}</b>
+                </p>
+                <br>
+                <p>
+                    {{ $modal['evolution'] ?? '' }}
+                </p>
+                <br>
+                <div class="grid grid-cols-3">
+                    <div class="group btn normal-case relative w-full h-0 pb-[100%] bg-cover bg-center rounded-xl border-4 border-blue-500 hover:border-blue-400 hover:shadow-[0_0_20px_-5px_rgba(63,131,248,0.9)] transition-all duration-300 ease-in-out shadow-lg" style="background-image: url('{{ $modal['image'] ?? '' }}');"></div>
+                    <div class="w-full h-full flex">
+                        <i class="fa-solid fa-caret-right text-6xl m-auto"></i>
+                    </div>
+                    <div class="group btn normal-case relative w-full h-0 pb-[100%] bg-cover bg-center rounded-xl border-4 border-blue-500 hover:border-blue-400 hover:shadow-[0_0_20px_-5px_rgba(63,131,248,0.9)] transition-all duration-300 ease-in-out shadow-lg" style="background-image: url('{{ $modal['evolution_image'] ?? '' }}');"></div>
+                </div>
+                <br>
+                <button wire:click="changeArchetype('{{ $modal['title'] ?? '' }}')" class="btn btn-orange-gradient normal-case text-black self-start w-full">Pilih Archetype Ini</button>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Livewire.on('openArchetypeModal', () => {
+            document.getElementById('archetypeModal').click();
+        });
+    });
+</script>

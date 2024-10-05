@@ -36,9 +36,20 @@
                             <span class="text-xs">Sangat tidak setuju</span>
                             <span class="text-xs ml-auto">Sangat setuju</span>
                         </div>
-                        <div class="flex justify-between">
+                        <div class="flex justify-between items-center">
                             @for($i = -5; $i <= 5; $i++)
-                                <input type="radio" name="archetype-question-{{ $loop->index + 1 }}" class="radio archetype-radio relative" value="{{$i}}" wire:model="answers.{{ $loop->index }}" />
+                                @php
+                                    $abs = abs($i);
+
+                                    if ($abs >= 4) {
+                                        $sizeClass = 'radio-lg';
+                                    } else if ($abs >= 2) {
+                                        $sizeClass = 'radio-md';
+                                    } else {
+                                        $sizeClass = 'radio-sm';
+                                    }
+                                @endphp
+                                <input type="radio" name="archetype-question-{{ $loop->index + 1 }}" class="radio {{ $sizeClass }} archetype-radio relative" value="{{$i}}" wire:model="answers.{{ $loop->index }}" />
                             @endfor
                         </div>
                     </div>
